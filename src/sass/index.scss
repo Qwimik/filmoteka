@@ -1,2 +1,16 @@
-@import './common';
-@import './example';
+// global
+@import './normalize';
+@import './variables';
+@import './breakpoints';
+@import './visually-hidden';
+@import './global';
+
+// partials
+@import './home-header';
+@import './library-header';
+@import './main';
+@import './pagination';
+@import './footer';
+
+@import './modal-details';
+@import './modal-team';
