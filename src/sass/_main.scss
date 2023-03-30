@@ -1,5 +1,73 @@
 // main
 
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+// .container {
+//     width: 100%;
+//     padding-top: 20px;
+//     padding-right: 20px;
+//     padding-bottom: 40px;
+//     padding-left: 20px;
+
+//     margin: 0 auto;
+
+//     @media screen and (min-width: 480px){
+//         max-width: 480px;
+        
+//     }
+
+//     @media screen and (min-width: 768px){
+//         max-width: 768px;
+//         padding: 60px 32px;
+//     }
+
+//         @media screen and (min-width: 1200px) {
+//         max-width: 1200px;
+//     }
+// }
+
+
+.moviesgallery-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    @media screen and (min-width: 1200px) {
+            gap: 16px;
+        }
+}
+.moviesgallery-wrap{
+   
+    width: 100%;
+    @media screen and (min-width: 768px) {
+            width: calc((768px - 96px) /2);
+            
+        }
+    
+        @media screen and (min-width: 1200px) {
+            width: calc((1200px - 96px) /3);
+        }
+}
+.moviesgallery-wrap>img{
+    border-radius: 5px;
+}
+.moviesgallery-text{
+    margin-top: 8px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px; 
+}
+.moviesgallery-text-title{
+    text-transform: uppercase;
+    line-height: 1.17;
+    @media screen and (min-width: 768px) {
+        line-height: 1.33;
+        }
+}
+.moviesgallery-text .text{
+ line-height: 1.33;
+ color: #FF6B08;
+}
+
 .films-section {
   padding-top: 20px;
   padding-bottom: 40px;
