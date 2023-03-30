@@ -1,1 +1,43 @@
 // footer
+.footer__general {
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+
+  padding-top: 29px;
+  padding-bottom: 29px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.16;
+}
+
+.footer__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  @include tablet {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+  }
+  @include desktop {
+    justify-content: center;
+  }
+}
+
+.footer__first {
+  margin-bottom: 10px;
+}
+
+.footer__second {
+  display: flex;
+  gap: 10px;
+}
+
+.footer__heart {
+  fill: var(--accent-color);
+}
+
+.modal__footer {
+  text-decoration: underline;
+}
