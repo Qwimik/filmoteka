@@ -15,11 +15,14 @@
     @content;
   }
 }
+@mixin flexCentered($type: flex, $justf: center, $align: center) {
+  display: $type;
+  justify-content: $justf;
+  align-items: $align;
+}
 
-@mixin retina {
-  @media (min-device-pixel-ration: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    @content;
-  }
+@mixin textStyle($size, $height, $ltr-spc: 0.04em) {
+  font-size: $size;
+  line-height: $height;
+  letter-spacing: $ltr-spc;
 }
