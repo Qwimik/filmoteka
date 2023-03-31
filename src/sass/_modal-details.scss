@@ -1,1 +1,239 @@
 // modal-details
+h2,
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.modal__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 100;
+    overflow: auto;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.is-hidden {
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 48px 20px;
+    opacity: 1;
+    background-color: $footer-bg-color;
+    color: inherit;
+    border: 1px solid #0000001a;
+    z-index: 101;
+    font-family: $primary-font-family;
+    min-height: 35vh;
+    max-height: 90vh;
+    overflow-y: auto;
+    transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 800ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+
+    &::-webkit-scrollbar {
+        width: 15px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $accent-color;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: $min-tablet) {
+    .modal {
+        width: 90%;
+        min-width: 280px;
+        max-width: 450px;
+        padding: 48px 20px;
+    }
+}
+
+@media screen and (min-width: $tablet) {
+    .modal {
+        width: 704px;
+        padding: 40px 36px;
+    }
+}
+
+@media screen and (min-width: $desktop) {
+    .modal {
+        width: 806px;
+        padding: 40px 36px;
+    }
+}
+
+.button__close {
+    position: absolute;
+    padding: 0;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    @include flexCentered(flex, center, center);
+    stroke: currentColor;
+    color: inherit;
+    border: none;
+    background-color: transparent;
+    transition: transform $animationTransition;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        stroke: $accent-color;
+    }
+}
+
+.modal__wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.modal__wrapping {
+    display: flex;
+    row-gap: 20px;
+    flex-direction: column;
+
+    @media screen and (min-width: $tablet) {
+        @include flexCentered(flex, center, flex-start);
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        gap: 16px;
+    }
+}
+
+.film__image {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+
+    @media screen and (min-width: $tablet) {
+        min-width: 264px;
+    }
+}
+
+.film__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.film__title {
+    @include textStyle(20px, 1.15);
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.film__item {
+    color: $modal-text;
+    @include textStyle(12px, 1.33);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.film__details {
+    @include textStyle(12px, 1.33);
+    margin-bottom: 8px;
+}
+
+.film__rating {
+    color: $light-color;
+    background-color: $accent-color;
+    @include textStyle(12px, 1.16);
+    border-radius: 5px;
+    padding: 1px 7px;
+    align-items: center;
+}
+
+.film__votes-number {
+    @include textStyle(12px, 1.16);
+    background-color: $footer-bg-color;
+    color: $dark-color;
+    padding: 1px 7px;
+    border-radius: 5px;
+}
+
+.film__about--title {
+    @include textStyle(20px, 1.15);
+    margin-bottom: 12px;
+}
+
+.film__about--text {
+    @include textStyle(12px, 1.66);
+}
+
+.film__button {
+    @extend %button-modal;
+}
+
+.film__button-theme-dark {
+    border: 1px solid $light-color !important;
+    color: $light-color !important;
+
+    &:hover {
+        border: none !important;
+        color: $dark-color !important;
+    }
+}
+
+.film__button--trailer {
+    @extend %button-modal;
+    align-items: center;
+}
+
+.film__trailers {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.film__trailer--item {
+    @media screen and (min-width: $tablet) {
+        margin-bottom: 15px;
+        height: 400px;
+    }
+}
+
+.film__trailer {
+    @media screen and (min-width: $tablet) {
+        width: 100%;
+        height: 400px;
+    }
+}
+
+.nologin {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: red;
+    text-transform: uppercase;
+}
