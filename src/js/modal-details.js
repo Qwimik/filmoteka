@@ -5,13 +5,6 @@ const modalBackdrop = document.querySelector('.modal__backdrop');
 const modal = document.querySelector('.modal');
 const movieItem = document.querySelector('.moviesgallery-item');
 
-movieItem.addEventListener('click', openModal);
-
-function openModal() {
-    modalBackdrop.classList.remove('.is-hidden');
-    setCloseOptionModal();
-}
-
 function setCloseOptionModal() {
   modalBackdrop.addEventListener('click', closeModalForClickBeackdrop);
   document.addEventListener('keydown', closeModalForEscape);
