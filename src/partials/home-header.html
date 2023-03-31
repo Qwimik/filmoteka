@@ -4,10 +4,12 @@
     <nav class="header__menu">
       <div class="header__logo">
         <a class="header__logo-link link" href="./index.html">
+          <div class="header__logo-wrap">
           <svg class="header__logo-svg" width="24" height="24">
-            <use href="./images/icons.svg#icon-film-logo"></use>
+            <use href="./images/film-logo.svg"></use>
           </svg>
           <span class="header__logo-name">Filmoteka</span> 
+          </div>
         </a>
       </div>
       <ul class="header__list">
@@ -21,8 +23,12 @@
     </nav>
     <form class="header__form">
       <div class="header__form-wrap">
-      <!-- <label class="header__form-label" for="movie-search"></label> -->
-      <input class="header__form-input" type="text" name="movie-search" placeholder="Movie search"/>
+      <input class="header__form-input" type="text" name="movie-search" placeholder="Movie search" required/>
+      <span class="header__form-icon">
+        <svg width="8" height="8">
+          <use href="./images/film-logo.svg"></use>
+        </svg>
+      </span>
       <button class="header__form-button" type="submit">OK</button>
       </div>
       <div class="header__form-text visually-hidden">Search result not successful. Enter the correct movie name and try again!</div>
