@@ -1,0 +1,81 @@
+html {
+    scroll-behavior: smooth;
+    overflow: overlay;
+
+    &::-webkit-scrollbar {
+        width: 15px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $accent-color;
+        border-radius: 10px;
+    }
+}
+
+body {
+    font-family: $primary-font-family;
+    background-color: $main-bg-color;
+    color: $dark-color;
+
+    &.dark-theme {
+        background-color: #161b20;
+        color: $light-color;
+    }
+}
+
+.dark-theme-modals {
+    background-color: #303030 !important;
+    color: $light-color !important;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,
+p {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-width: 320px;
+
+    @media screen and (min-width: #{$mobile}) {
+        width: $mobile;
+    }
+
+    @media screen and (min-width: #{$tablet}) {
+        width: $tablet;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    @media screen and (min-width: #{$desktop}) {
+        width: $desktop;
+    }
+}
+
+.disabled {
+    display: none;
+}
