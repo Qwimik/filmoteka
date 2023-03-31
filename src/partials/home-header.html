@@ -1,4 +1,32 @@
-<header>
-  <!--home-header-->
-  <!--add code under this line-->
+<header class="header">
+  <div class="container">
+    <div class="container__wrap">
+    <nav class="header__menu">
+      <div class="header__logo">
+        <a class="header__logo-link link" href="./index.html">
+          <svg class="header__logo-svg" width="24" height="24">
+            <use href="./images/icons.svg#icon-film-logo"></use>
+          </svg>
+          <span class="header__logo-name">Filmoteka</span> 
+        </a>
+      </div>
+      <ul class="header__list">
+        <li class="header__list-item current">
+          <a class="header__list-link" href="./index.html">home</a>
+        </li>
+        <li class="header__list-item">
+          <a class="header__list-link" href="./library.html">my library</a>
+        </li>
+      </ul>
+    </nav>
+    <form class="header__form">
+      <div class="header__form-wrap">
+      <!-- <label class="header__form-label" for="movie-search"></label> -->
+      <input class="header__form-input" type="text" name="movie-search" placeholder="Movie search"/>
+      <button class="header__form-button" type="submit">OK</button>
+      </div>
+      <div class="header__form-text isually-hidden">Search result not successful. Enter the correct movie name and try again!</div>
+    </form>
+  </div>
+  </div>
 </header>

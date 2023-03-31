@@ -1,1 +1,142 @@
-// home-header
+.header {
+  background-image: url('../images/header-fone-mob-1x-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 230px;
+
+  // @include retina {
+  // 		background-image: url('../images/header-fone-mob-2x-min.jpg');
+  // 	}
+
+  @include tablet {
+    background-image: url('../images/header-fone-tab-1x-min.jpg');
+
+    // @include retina {
+    // 	background-image: url('../images/header-fone-tab-2x-min.jpg');
+    // 	}
+  }
+
+  @include desktop {
+    background-image: url('../images/header-fone-1x-min.jpg');
+
+    // @include retina {
+    // 	background-image: url('../images/header-fone-2x-min.jpg');
+    // 	}
+  }
+
+  &__menu {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    padding-top: 44px;
+    margin-bottom: 54px;
+    display: flex;
+    align-items: center;
+    color: var(--primary-bg-color);
+
+    @include tablet {
+      padding-top: 40px;
+      margin-bottom: 52px;
+    }
+  }
+
+  &__logo {
+    margin-right: 112px;
+
+    @include tablet {
+      margin-right: 387px;
+      display: flex;
+      align-items: center;
+    }
+
+    &-link {
+    }
+
+    &-svg {
+    }
+
+    &-name {
+      display: none;
+
+      @include tablet {
+        display: inline;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 40px;
+    text-transform: uppercase;
+
+    &-item {
+    }
+
+    &-link {
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding-bottom: 44px;
+    position: relative;
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 0.1px;
+      background-color: var(--primary-bg-color);
+      position: absolute;
+      bottom: 92px;
+    }
+
+    &-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      width: 280px;
+    }
+
+    /* 		&-label {
+
+		} */
+
+    &-input {
+      width: 100%;
+      background-color: transparent;
+      border-color: transparent;
+      /* 			border: none;
+			border-bottom: 0.1px solid var(--primary-bg-color);
+			color: var(--primary-bg-color); */
+    }
+
+    &-button {
+    }
+
+    &-text {
+      font-size: 14px;
+      line-height: calc(16 / 14);
+      color: var(--accent-menu-color);
+    }
+  }
+}
+
+.container {
+  &__wrap {
+  }
+}
+
+.link {
+}
+
+.current {
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-menu-color);
+  }
+}
