@@ -44,7 +44,7 @@ export function renderCardMarkup(data) {
         } else if (first_air_date) {
           cardDate = first_air_date;
         }
-        cardYear = cardDate.substring(0, 4);
+        let cardYear = cardDate.substring(0, 4);
 
         let cardGenre = genre_ids.map(id => id);
 
