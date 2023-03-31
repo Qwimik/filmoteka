@@ -1,5 +1,5 @@
 // pagination.js
-// Імпортуєм бібліотеку tui-pagination в проект:
+// Імпортуєм бібліотеку tui-pagination з її стилями в проект:
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 // Імпортуєм запити:
@@ -18,8 +18,6 @@ const options = {
   visiblePages: 5,
   page: 1,
   centerAlign: true,
-  // firstItemClassName: 'tui-first-child',
-  // lastItemClassName: 'tui-last-child',
   template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
     currentPage:
@@ -32,63 +30,41 @@ const options = {
       '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
       '<span class="tui-ico-{{type}}">{{type}}</span>' +
       '</span>',
-    // moreButton:
-    //   '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-    //   '<span class="tui-ico-ellip">...</span>' +
-    //   '</a>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
   },
-  // onPageClick: function (page) {
-  //     // Функція, яка виконується при кліку на сторінку
-  //     return 'http://example.com/page=' + page;
-  //   },
 };
 export const pagination = new Pagination(container, options);
 
+// Додаємо обробник події
 pagination.on('beforeMove', async evt => {
+  // Переміщуємось наверх сторінки
+  scrollToTop();
+  // Отримуємо номер поточної сторінки:
   currentPage = evt.page;
+  // Отримуємо елементи для нової сторінки:
   const movies = await searchTrending(currentPage);
+  // Рендеримо отримані елементи:
   renderCardMarkup(movies);
 });
-
-const clearHTML = () => {
+// Reset pagination за потреби:
+pagination.reset();
+// повна очистка пагінації:
+const clearHTMLPagination = () => {
   pagination.innerHTML = '';
 };
-// For each custom event, the page number is returned in the eventData object, and false in the beforeMove event is canceled. (The afterMove event also does not fired)
-// якщо ви зберігаєте дані у змінній myData, ви можете оновити сторінку після вибору сторінки в пагінації
-// pagination.on('beforeMove', evt => {
-//   const { page } = evt;
-
-//   // Розрахунок індексів елементів для відображення на сторінці
-//   const startIndex = (page - 1) * options.itemsPerPage;
-//   const endIndex = startIndex + options.itemsPerPage;
-
-//   // Отримання елементів для відображення на сторінці
-//   const pageData = myData.slice(startIndex, endIndex);
-
-//   // Оновлення списку елементів у вашому інтерфейсі
-//   updateMyInterface(pageData);
-
-//   // Повертаємо false, щоб скасувати стандартну поведінку пагінації
-//   return false;
+// Функція для переміщення наверх сторінки
+function scrollToTop() {
+  if (window.pageYOffset > 0) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+}
+// paganation.on('afterMove', event => {
+//   const currentPage = event.page;
+//   console.log(currentPage);
 // });
-
-// pagination.on('afterMove', ({ page }) => console.log(page));
-
-// pagination.on('afterMove', ({ page }) => console.log(page));
-
-// const pagination = new Pagination(container, options);
-
-// // const items = [...]; // масив елементів
-
-// function displayItems(page) {
-//   const startIndex = (page - 1) * options.itemsPerPage;
-//   const endIndex = startIndex + options.itemsPerPage;
-//   const pageItems = items.slice(startIndex, endIndex);
-// }
-
-// myData = [
-//   /* нові дані */
-// ];
-
-// pagination.setTotalItems(myData.length);
-// pagination.movePageTo(1);
