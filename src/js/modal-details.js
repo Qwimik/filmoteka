@@ -6,7 +6,8 @@ const movieItem = document.querySelector('.moviesgallery-item');
 movieItem.addEventListener('click', openModal);
 
 function openModal() {
-    modalBackdrop.classList.remove('is-hidden');
+    modalBackdrop.classList.remove('.is-hidden');
+    document.body.classList.remove('.is-hidden')
     setCloseOptionModal();
 }
 
@@ -30,6 +31,7 @@ function closeModalForClickBeackdrop(e) {
 
 function closeModal() {
     modalBackdrop.classList.add('.is-hidden');
+    document.body.classList.add('.is-hidden');
     modalBackdrop.removeEventListener('click', closeModalForClickBeackdrop);
     document.removeEventListener('keydown',closeModalForEscape);
 }
