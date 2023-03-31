@@ -2,6 +2,10 @@ const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
 
 const cardList = document.querySelector(`.moviesgallery-box`);
 
+// import genres from '../data/genres.json';
+
+// console.log(genres);
+
 const genres = [
   { id: 28, name: 'Action' },
   { id: 12, name: 'Adventure' },
@@ -78,9 +82,10 @@ export function renderCardMarkup(data) {
                 <div class="ganres-wrap">
                 <p class="text">${finalCardGenre}  | ${cardYear}</p>
                 <div class="rating">${rating}</div>
-                </div>
               </div>
-            </div>`;
+            </div>
+            </div>
+            </li>`;
       }
     )
     .join(``);
