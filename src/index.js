@@ -6,3 +6,5 @@ import './js/footer';
 
 import './js/modal-details';
 import './js/modal-team';
+import './js/open-modal';
+import './js/firebase';
