@@ -16,10 +16,9 @@ function handleClick(event) {
 }
 
 // Знаходимо кнопки за атрибутами
-const buttonWatched = document.querySelector('button[data-action]');
-const buttonQueue = document.querySelector('button[data-action]');
-
+// const buttonWatched = document.querySelector('button[data-action]');
+// const buttonQueue = document.querySelector('button[data-action]');
 
 // додаємо обробники кліка на кнопки, щоб викликати функцію
-buttonWatched.addEventListener('click', handleClick);
-buttonQueue.addEventListener('click', handleClick);
+// buttonWatched.addEventListener('click', handleClick);
+// buttonQueue.addEventListener('click', handleClick);
