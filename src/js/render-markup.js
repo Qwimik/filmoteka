@@ -1,12 +1,10 @@
 const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
 
-const cardList = document.querySelector(`.moviesgallery-box`);
-
 import { genres } from '../data/genres.js';
 
 export function renderCardMarkup(data) {
   const resultArray = data.results;
-  console.log(resultArray);
+
   const singleCard = resultArray
     .map(
       ({
@@ -46,9 +44,6 @@ export function renderCardMarkup(data) {
           cardDate = first_air_date;
         }
         let cardYear = cardDate.substring(0, 4);
-
-        let cardGenre = genre_ids.map(id => id);
-
         return `<li class="moviesgallery-item" data-id="${id}">
             <div class="moviesgallery-wrap">
             <div class="thumb">
@@ -66,6 +61,5 @@ export function renderCardMarkup(data) {
       }
     )
     .join(``);
-  cardList.innerHTML = singleCard;
   return singleCard;
 }

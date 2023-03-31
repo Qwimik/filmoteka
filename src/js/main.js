@@ -1,15 +1,21 @@
 import * as API from './api';
 import { renderCardMarkup } from './render-markup';
 
+const cardList = document.querySelector(`.moviesgallery-box`);
+
 //=======================================================
 // // приклад запросу через api
 // import * as API from './api';
 
 window.addEventListener('load', event => {
   try {
-    API.searchTrending(1).then(res => {
-      renderCardMarkup(res);
-    });
+    API.searchTrending(1)
+      .then(res => {
+        return renderCardMarkup(res);
+      })
+      .then(res => {
+        return (cardList.innerHTML = res);
+      });
   } catch (error) {
     console.log(error);
   }
