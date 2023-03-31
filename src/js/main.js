@@ -8,7 +8,6 @@ import { renderCardMarkup } from './render-markup';
 window.addEventListener('load', event => {
   try {
     API.searchTrending(1).then(res => {
-      console.log(res.results);
       renderCardMarkup(res);
     });
   } catch (error) {
