@@ -58,6 +58,8 @@ function cardMarkup(data) {
         original_name,
         first_air_date,
       }) => {
+        let rating = vote_average.toFixed(1);
+
         let itemGenre = [];
         let finalCardGenre = [];
         genre_ids.forEach(function (item) {
@@ -90,7 +92,10 @@ function cardMarkup(data) {
               <img src="${POSTER_BASE_URL}${poster_path}" alt="${title}" width="440" />
               <div class="moviesgallery-text">
                 <p class="moviesgallery-text-title">${cardTitle}</p>
+                <div class="ganres-wrap">
                 <p class="text">${finalCardGenre}  | ${cardYear}</p>
+                <div class="rating">${rating}</div>
+                </div>
               </div>
             </div>`;
       }
