@@ -1,0 +1,64 @@
+// .auth-container {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+// }
+
+// .overlay {
+//   background-color: #24242485;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .modal-auth {
+//   &__login,
+//   &__singin {
+//     width: 300px;
+//     height: 400px;
+//     background-color: #fff;
+//     padding: 40px;
+//   }
+// }
+
+// .auth-form {
+//   &__login,
+//   &__singin {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 20px;
+//   }
+
+//   &__label {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 10px;
+//     &_span {
+//       font-weight: 500;
+//     }
+//   }
+
+//   &__input {
+//     padding: 5px 10px;
+//   }
+//   &__btnSubmit,
+//   &__btnToRegister {
+//     padding: 7px 14px;
+//     &:hover {
+//       background-color: #242424;
+//       color: #fff;
+//     }
+//   }
+// }
+
+// .open-auth {
+//   display: block;
+//   margin: 0 auto;
+//   padding: 20px;
+// }
