@@ -70,7 +70,9 @@ export function renderCardMarkup(data) {
 
         return `<li class="moviesgallery-item" data-id="${id}">
             <div class="moviesgallery-wrap">
-              <img src="${POSTER_BASE_URL}${poster_path}" alt="${title}" width="440" />
+            <div class="thumb">
+              <img class="moviesgallery-img" src="${POSTER_BASE_URL}${poster_path}" alt="${title}" width="440" />
+            </div>
               <div class="moviesgallery-text">
                 <p class="moviesgallery-text-title">${cardTitle}</p>
                 <div class="ganres-wrap">
