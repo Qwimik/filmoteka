@@ -14,12 +14,12 @@ function createModalMarkup(movie) {
     id,
   } = movie;
 
-  const trailerButton =
-    videos.results.length !== 0
-      ? `<li class="btn-list__item btn-list__item--film"><button type="button" class="button js-film__button--trailer film__button upper">
-      Watch trailer
-    </button></li>`
-      : '';
+  // const trailerButton =
+  //   videos.results.length !== 0
+  //     ? `<li class="btn-list__item btn-list__item--film"><button type="button" class="button js-film__button--trailer film__button upper">
+  //     Watch trailer
+  //   </button></li>`
+  //     : '';
 
   const genresList = genres.map(genre => genre.name).join(', ');
   const genre =
@@ -104,7 +104,7 @@ function createModalMarkup(movie) {
                 Similar
                 </button>
                 </li>
-                ${trailerButton}
+
               </ul>
             </div>
           </div>

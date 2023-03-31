@@ -6,6 +6,7 @@ import { genres } from '../data/genres.js';
 
 export function renderCardMarkup(data) {
   const resultArray = data.results;
+  console.log(resultArray);
   const singleCard = resultArray
     .map(
       ({
