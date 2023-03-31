@@ -1,5 +1,5 @@
 // pagination.js
-// Імпортуєм бібліотеку tui-pagination в свій проект:
+// Імпортуєм бібліотеку tui-pagination в проект:
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 // Імпортуєм запити:
@@ -13,13 +13,13 @@ const container = document.getElementById('pagination');
 // visiblePages: кількість сторінок, які відображаються одночасно в пагінації.
 // onPageClick: функція, яка виконується при кліку на сторінку. У параметрі page передається номер клікнутої сторінки.
 const options = {
-  totalItems: 500,
-  itemsPerPage: 9,
+  totalItems: 400,
+  itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
   centerAlign: true,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
+  // firstItemClassName: 'tui-first-child',
+  // lastItemClassName: 'tui-last-child',
   template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
     currentPage:
@@ -32,17 +32,17 @@ const options = {
       '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
       '<span class="tui-ico-{{type}}">{{type}}</span>' +
       '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
+    // moreButton:
+    //   '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+    //   '<span class="tui-ico-ellip">...</span>' +
+    //   '</a>',
   },
   // onPageClick: function (page) {
   //     // Функція, яка виконується при кліку на сторінку
   //     return 'http://example.com/page=' + page;
   //   },
 };
-const pagination = new Pagination(container, options);
+export const pagination = new Pagination(container, options);
 
 pagination.on('beforeMove', async evt => {
   currentPage = evt.page;
@@ -50,6 +50,9 @@ pagination.on('beforeMove', async evt => {
   renderCardMarkup(movies);
 });
 
+const clearHTML = () => {
+  pagination.innerHTML = '';
+};
 // For each custom event, the page number is returned in the eventData object, and false in the beforeMove event is canceled. (The afterMove event also does not fired)
 // якщо ви зберігаєте дані у змінній myData, ви можете оновити сторінку після вибору сторінки в пагінації
 // pagination.on('beforeMove', evt => {
