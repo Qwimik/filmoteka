@@ -229,12 +229,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
 #pagination .tui-page-btn {
   padding: 0;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -256,6 +257,17 @@ body {
 #pagination .tui-page-btn.tui-is-selected {
   background: var(--accent-color);
   color: #ffffff;
+}
+@media screen and (min-width: 400px) {
+  #pagination .tui-page-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (min-width: 768px) {
+  #pagination .tui-page-btn {
+    margin-bottom: 60px;
+  }
 }
 
 .footer {

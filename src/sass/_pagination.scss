@@ -7,11 +7,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
 }
 #pagination .tui-page-btn {
   padding: 0;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -33,6 +34,13 @@
   &.tui-is-selected {
     background: var(--accent-color);
     color: $light-color;
+  }
+  @media screen and (min-width: 400px) {
+    width: 40px;
+    height: 40px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 60px;
   }
 }
 // .tui-pagination .tui-page-btn.tui-first {
