@@ -1,0 +1,61 @@
+%button-library {
+    display: inline-block;
+    margin: 0;
+    padding: 12px 41px;
+    border-radius: --border-radius;
+    border: 1px solid --light-color;
+    cursor: pointer;
+    text-align: center;
+
+    color: --light-color;
+    background-color: transparent;
+
+    font-family: inherit;
+}
+
+%button-library--hover {
+    display: inline-block;
+    margin: 0;
+    padding: 12px 41px;
+    border-radius: --border-radius;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: --shadow;
+
+    color: --light-color;
+    background-color: --orange-color;
+
+    font-family: inherit;
+}
+
+%button-modal {
+    display: inline-block;
+    margin: 0;
+    padding: 12px 10px;
+    border-radius: --border-radius;
+    border: 1px solid --dark-color;
+    cursor: pointer;
+    text-align: center;
+
+    color: --dark-color;
+    background-color: transparent;
+
+    font-family: inherit;
+}
+
+%button-modal--hover {
+    display: inline-block;
+    margin: 0;
+    padding: 12px 10px;
+    border-radius: --border-radius;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: --shadow;
+
+    color: --light-color;
+    background-color: --orange-color;
+
+    font-family: inherit;
+}

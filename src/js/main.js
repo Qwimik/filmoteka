@@ -1,18 +1,22 @@
-// main.js
+import * as API from './api';
+import { renderCardMarkup } from './render-markup';
 
 //=======================================================
 // // приклад запросу через api
 // import * as API from './api';
 
-// try {
-//   API.searchTrending(3).then(res => {
-//     // 3 - це сторінка запиту (page)
-//     // тут рисуємо інтерфейс
-//     console.log(res);
-//   });
-// } catch (error) {
-//   console.log(error);
-// }
+window.addEventListener('load', event => {
+  try {
+    API.searchTrending(1).then(res => {
+      console.log(res.results);
+      renderCardMarkup(res);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// function cardMarkup(data) {}
 
 // try {
 //   API.searchMovieId(76600).then(res => {
@@ -34,4 +38,4 @@
 // } catch (error) {
 //   console.log(error);
 // }
-//=======================================================
+// =======================================================
