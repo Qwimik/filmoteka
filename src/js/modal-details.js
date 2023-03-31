@@ -1,4 +1,6 @@
 // modal-details.js
+/*
+
 const modalBackdrop = document.querySelector('.modal__backdrop');
 const modal = document.querySelector('.modal');
 const movieItem = document.querySelector('.moviesgallery-item');
@@ -7,7 +9,6 @@ movieItem.addEventListener('click', openModal);
 
 function openModal() {
     modalBackdrop.classList.remove('.is-hidden');
-    document.body.classList.remove('.is-hidden')
     setCloseOptionModal();
 }
 
@@ -31,8 +32,7 @@ function closeModalForClickBeackdrop(e) {
 
 function closeModal() {
     modalBackdrop.classList.add('.is-hidden');
-    document.body.classList.add('.is-hidden');
     modalBackdrop.removeEventListener('click', closeModalForClickBeackdrop);
     document.removeEventListener('keydown',closeModalForEscape);
-}
+}*/
 
