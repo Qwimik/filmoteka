@@ -43,7 +43,7 @@ pagination.on('beforeMove', async evt => {
   // Переміщуємось наверх сторінки
   scrollToTop();
   // Отримуємо номер поточної сторінки:
-  currentPage = evt.page;
+  let currentPage = evt.page;
   // Отримуємо елементи для нової сторінки:
   const movies = await searchTrending(currentPage);
   // Рендеримо отримані елементи:
