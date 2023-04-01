@@ -1,173 +1,134 @@
-// firebase
-
 // import { initializeApp } from 'firebase/app';
-// import {
-//   getDatabase,
-//   set,
-//   ref,
-//   onValue,
-//   update,
-//   remove,
-// } from 'firebase/database';
 // import {
 //   getAuth,
 //   createUserWithEmailAndPassword,
 //   signInWithEmailAndPassword,
-//   onAuthStateChanged,
 //   signOut,
 // } from 'firebase/auth';
+// import { getDatabase, set, ref, onValue, update } from 'firebase/database';
 
 // const firebaseConfig = {
-//   apiKey: 'AIzaSyAve7rnA0rNZ2yYsLwpVyVI_ARUeBe9oLY',
-//   authDomain: 'filmoteka-b4806.firebaseapp.com',
-//   projectId: 'filmoteka-b4806',
-//   storageBucket: 'filmoteka-b4806.appspot.com',
-//   messagingSenderId: '503099436389',
-//   appId: '1:503099436389:web:8034875e0ecf8a6d41058c',
+//   apiKey: 'AIzaSyDDNdha_Mwk9RTliXdwrHAWqx0yN9G0Yeo',
+//   authDomain: 'filmoteka-2bd7c.firebaseapp.com',
+//   projectId: 'filmoteka-2bd7c',
+//   storageBucket: 'filmoteka-2bd7c.appspot.com',
+//   messagingSenderId: '654768201498',
+//   appId: '1:654768201498:web:67ced8dc5c6682d69fd6a3',
 // };
 
 // const app = initializeApp(firebaseConfig);
-// const db = getDatabase(app);
-// export const auth = getAuth();
+// const auth = getAuth();
+// const database = getDatabase(app);
+// let user;
 
-// const refs = {
-//   btnOpen: document.querySelector('.open-auth'),
-//   overlay: document.querySelector('.overlay'),
-//   modalLogin: document.querySelector('.modal-auth__login'),
-//   formLogin: document.querySelector('.auth-form__login'),
-//   emailLogin: document.querySelector('#authEmailLogin'),
-//   passwordLogin: document.querySelector('#authPasswordLogin'),
-//   btnSubmitLogin: document.querySelector('#authSubmitLogin'),
-//   registration: document.querySelector('.registration'),
-//   tologin: document.querySelector('.tologin'),
-//   modalSingin: document.querySelector('.modal-auth__singin'),
-//   formSingin: document.querySelector('.auth-form__singin'),
-//   emailSingin: document.querySelector('#authEmailSingin'),
-//   passwordSingin: document.querySelector('#authPasswordSingin'),
-//   btnSubmitSingin: document.querySelector('#authSubmitSingin'),
-// };
-
-// const {
-//   btnOpen,
-//   overlay,
-//   formLogin,
-//   emailLogin,
-//   passwordLogin,
-//   btnSubmitLogin,
-//   registration,
-//   modalLogin,
-//   modalSingin,
-//   formSingin,
-//   emailSingin,
-//   passwordSingin,
-//   btnSubmitSingin,
-//   tologin,
-// } = refs;
-
-// let isModalOpen = false;
-// let currentUser = null;
-
-// btnOpen.addEventListener('click', onBtnOpenClick);
-
-// function onBtnOpenClick() {
-//   btnOpen.removeEventListener('click', onBtnOpenClick);
-//   overlay.classList.remove('visually-hidden');
-//   overlay.addEventListener('click', onOverlayClick);
-//   window.addEventListener('keydown', onOverlayClick);
-//   formLogin.addEventListener('submit', onSubmitLogin);
-//   formSingin.addEventListener('submit', onSubmitSingin);
-//   registration.addEventListener('click', onRegistClick);
-//   tologin.addEventListener('click', onRegistClick);
-//   isModalOpen = true;
-// }
-
-// function onOverlayClick(e) {
-//   if (e.currentTarget === e.target || e.code === 'Escape') {
-//     overlay.classList.add('visually-hidden');
-//     overlay.removeEventListener('click', onOverlayClick);
-//     window.removeEventListener('keydown', onOverlayClick);
-//     formLogin.removeEventListener('submit', onSubmitLogin);
-//     formSingin.removeEventListener('submit', onSubmitSingin);
-//     btnOpen.addEventListener('click', onBtnOpenClick);
-//     registration.removeEventListener('click', onRegistClick);
-//     tologin.removeEventListener('click', onRegistClick);
-//     isModalOpen = false;
-//   }
-// }
-
-// function onRegistClick() {
-//   modalLogin.classList.toggle('visually-hidden');
-//   modalSingin.classList.toggle('visually-hidden');
-// }
-
-// function onSubmitLogin(e) {
+// // форма реєстрації
+// const form = document.querySelector('#auth-form');
+// form.addEventListener('submit', e => {
 //   e.preventDefault();
-//   if (
-//     validateEmail(emailLogin) === false ||
-//     validatePassword(passwordLogin) === false
-//   ) {
-//     return;
-//   }
-//   signInWithEmailAndPassword(auth, email.value, password.value)
-//     .then(userData => {
-//       const user = userData.user;
-//       const dt = new Date();
-//       update(ref(db, 'users/' + user.uid), {
-//         last_login: dt,
-//       });
-//       formLogin.reset();
+
+//   const email = form.authEmail.value;
+//   const password = form.authPassword.value;
+
+//   createUserWithEmailAndPassword(auth, email, password)
+//     .then(userCredential => {
+//       // Signed in
+//       // isLogin = true;
+//       // тут ховаємо можливість логіну
+//       user = userCredential.user;
+//       set(ref(database, 'users/' + user.uid), {
+//         email: email,
+//       })
+//         .then(() => {
+//           // Data saved successfully!
+//           // notiflix - success
+//         })
+//         .catch(error => {
+//           // The write failed...
+//           // notiflix - error
+//           console.log(error);
+//         });
 //     })
 //     .catch(error => {
-//       console.log(error);
+//       // notiflix - error
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
 //     });
-//   currentUser = auth.currentUser;
-//   console.log(currentUser);
-// }
-
-// function onSubmitSingin(e) {
-//   e.preventDefault();
-//   if (
-//     validateEmail(emailSingin) === false ||
-//     validatePassword(passwordSingin) === false
-//   ) {
-//     return;
-//   }
-//   createUserWithEmailAndPassword(auth, emailSingin, passwordSingin)
-//     .then(userData => {
-//       const user = userData.user;
-//       set(ref(db, 'users/' + user.uid), {
-//         email: emailSingin,
-//       });
-//       formSingin.reset();
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-//   currentUser = auth.currentUser;
-// }
-
-// // validate
-// function validateEmail(email) {
-//   const expression = /^[^@]+@\w+(\.\w+)+\w$/;
-//   if (expression.test(email) === true) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-
-// function validatePassword(password) {
-//   if (password.length < 6) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// }
-
-// onAuthStateChanged(auth, user => {
-//   if (user) {
-//     const uid = user.uid;
-//     console.log(auth.currentUser);
-//     console.log(uid);
-//   }
 // });
+
+// // форма входу в аккаунт
+// const formLogin = document.querySelector('#auth-formLogin');
+// formLogin.addEventListener('submit', e => {
+//   e.preventDefault();
+
+//   const email = formLogin.authEmail.value;
+//   const password = formLogin.authPassword.value;
+
+//   signInWithEmailAndPassword(auth, email, password)
+//     .then(userCredential => {
+//       // Signed in
+//       user = userCredential.user;
+//       // isLogin = true;
+//       // запит в бд за фільмами
+//       //   onUpdateAuthStorage(user);
+
+//       const starCountRef = ref(database, 'users/' + user.uid);
+//       onValue(starCountRef, snapshot => {
+//         const data = snapshot.val();
+//         console.log(data);
+//         // забираємо с бд фільми і додаєму в localstorage
+//       });
+//     })
+//     .catch(error => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       console.log(errorMessage);
+//     });
+
+//   // видаляємо можливість повторного логіну, та рисуємо кнопку виходу
+// });
+
+// // вийти з акаунту
+// const btnSignout = document.querySelector('#signout');
+// btnSignout.addEventListener('click', e => {
+//   signOut(auth)
+//     .then(() => {
+//       // notiflix - вихід з акаунту
+//       // isLogin = false;
+//       // чистимо localstorage
+//     })
+//     .catch(err => {
+//       // notiflix - помилка виходу з акаунту
+//       console.log(err);
+//     });
+// });
+
+// // функція додавання-видалення в базу данних фільмів
+// export function onUpdateAuthStorage(user) {
+//   const last_date = new Date();
+//   // стягуємо з localstorage дані
+//   const data = {
+//     watched: ['watched', 'watched', 'watched'],
+//   };
+
+//   update(ref(database, 'users/' + user.uid), {
+//     lastLogin: last_date,
+//     // записуємо в бд
+//     films: data,
+//   })
+//     .then(() => {
+//       // notiflix - success
+//     })
+//     .catch(err => {
+//       // notiflix - error
+//       console.log(err);
+//     });
+// }
+
+// // const updBtn = document.querySelector('#upd');
+
+// // updBtn.addEventListener('click', upd);
+
+// function upd() {
+//   console.log(user);
+//   onUpdateAuthStorage(user);
+// }

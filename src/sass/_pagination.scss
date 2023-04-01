@@ -3,12 +3,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px;
+  margin: 40px 0;
+  @media screen and (min-width: 768px) {
+    margin: 60px 0;
+  }
 }
 #pagination .tui-page-btn {
   padding: 0;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -22,6 +25,8 @@
   color: $dark-color;
   &.tui-prev,
   &.tui-next {
+    margin-right: 0;
+    margin-left: 0;
     background-color: $footer-bg-color;
   }
   & .tui-ico-ellip {
@@ -31,11 +36,35 @@
     background: var(--accent-color);
     color: $light-color;
   }
+  &.tui-first,
+  &.tui-last {
+    display: none;
+    @media screen and (min-width: 768px) {
+      display: flex;
+    }
+  }
+  &.tui-prev-is-ellip,
+  &.tui-next-is-ellip {
+    display: none;
+    @media screen and (min-width: 768px) {
+      display: flex;
+    }
+  }
   @media screen and (min-width: 400px) {
     width: 40px;
     height: 40px;
   }
   @media screen and (min-width: 768px) {
     margin-bottom: 60px;
+    &.tui-first,
+    &.tui-next {
+      position: relative;
+      transform: translateX(100%);
+    }
+    &.tui-prev,
+    &.tui-last {
+      position: relative;
+      transform: translateX(-100%);
+    }
   }
 }

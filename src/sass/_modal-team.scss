@@ -1,4 +1,21 @@
 // modal-team
+.modal-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow-y: scroll;
+}
+
+.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 .team__modal {
     overflow-x: hidden;
     padding: 10px;
@@ -9,7 +26,7 @@
 .team__modal-adapt {
     position: relative;
     width: 280px;
-    padding: 50px 20px 70px 20px;
+    padding: 20px;
     top: 20px;
     left: 50%;
     transform: translateX(-50%) scale(1);
@@ -23,17 +40,40 @@
 
     @media screen and (min-width: $tablet) and (max-width: 1279px) {
         width: 600px;
-        padding: 42px 28px 28px 28px;
+        padding: 30px 25px 30px 25px;
     }
 
     @media screen and (min-width: $desktop) {
         width: 900px;
-        padding: 42px 28px 28px 28px;
+        padding: 35px 30px 10px 30px;
     }
 }
 
 .modal__btn {
     margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;  
+    // background-color: #c064cc;  
+}
+
+.modal__close-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    margin: 5px;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-size: 16px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;  
+}
+
+.modal__close-icon:hover,
+.modal__close-icon:focus {
+    fill: #ff6b08;      
 }
 
 .team {
@@ -110,16 +150,16 @@
 
 .team__img-container {
     overflow: hidden;
-        width: 170px;
-        height: 170px;
-        border-radius: 15px;
-        margin: 0 auto;
-        margin-bottom: 10px;
-        position: relative;       
+    width: 170px;
+    height: 170px;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    position: relative;       
 }
 
 .team__img {
-     margin-top: 10px;
+    margin-top: 10px;
     width: 100%;
     height: auto;
     border-radius: 15px;
