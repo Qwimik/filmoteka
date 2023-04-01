@@ -1,5 +1,5 @@
 const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
-
+const cardList = document.querySelector(`.moviesgallery-box`);
 import { genres } from '../data/genres.js';
 
 export function renderCardMarkup(data) {
@@ -61,5 +61,6 @@ export function renderCardMarkup(data) {
       }
     )
     .join(``);
+  cardList.innerHTML = singleCard;
   return singleCard;
 }
