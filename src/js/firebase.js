@@ -19,6 +19,7 @@
 // const app = initializeApp(firebaseConfig);
 // const auth = getAuth();
 // const database = getDatabase(app);
+// let user;
 
 // // форма реєстрації
 // const form = document.querySelector('#auth-form');
@@ -31,10 +32,11 @@
 //   createUserWithEmailAndPassword(auth, email, password)
 //     .then(userCredential => {
 //       // Signed in
-//       const user = userCredential.user;
+//       // isLogin = true;
+//       // тут ховаємо можливість логіну
+//       user = userCredential.user;
 //       set(ref(database, 'users/' + user.uid), {
 //         email: email,
-//         films: [],
 //       })
 //         .then(() => {
 //           // Data saved successfully!
@@ -64,13 +66,16 @@
 //   signInWithEmailAndPassword(auth, email, password)
 //     .then(userCredential => {
 //       // Signed in
-//       const user = userCredential.user;
-
+//       user = userCredential.user;
+//       // isLogin = true;
 //       // запит в бд за фільмами
+//       //   onUpdateAuthStorage(user);
+
 //       const starCountRef = ref(database, 'users/' + user.uid);
 //       onValue(starCountRef, snapshot => {
 //         const data = snapshot.val();
 //         console.log(data);
+//         // забираємо с бд фільми і додаєму в localstorage
 //       });
 //     })
 //     .catch(error => {
@@ -78,6 +83,8 @@
 //       const errorMessage = error.message;
 //       console.log(errorMessage);
 //     });
+
+//   // видаляємо можливість повторного логіну, та рисуємо кнопку виходу
 // });
 
 // // вийти з акаунту
@@ -86,6 +93,8 @@
 //   signOut(auth)
 //     .then(() => {
 //       // notiflix - вихід з акаунту
+//       // isLogin = false;
+//       // чистимо localstorage
 //     })
 //     .catch(err => {
 //       // notiflix - помилка виходу з акаунту
@@ -94,15 +103,17 @@
 // });
 
 // // функція додавання-видалення в базу данних фільмів
-// export function onUpdateAuthStorage() {
+// export function onUpdateAuthStorage(user) {
 //   const last_date = new Date();
 //   // стягуємо з localstorage дані
-//   //const data = [];
+//   const data = {
+//     watched: ['watched', 'watched', 'watched'],
+//   };
 
 //   update(ref(database, 'users/' + user.uid), {
 //     lastLogin: last_date,
 //     // записуємо в бд
-//     //films: data;
+//     films: data,
 //   })
 //     .then(() => {
 //       // notiflix - success
@@ -111,4 +122,13 @@
 //       // notiflix - error
 //       console.log(err);
 //     });
+// }
+
+// // const updBtn = document.querySelector('#upd');
+
+// // updBtn.addEventListener('click', upd);
+
+// function upd() {
+//   console.log(user);
+//   onUpdateAuthStorage(user);
 // }
