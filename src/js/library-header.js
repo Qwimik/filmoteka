@@ -9,7 +9,7 @@ async function handleClick(event) {
 
   if (!key) return; // якщо значення не задано, нічого не робимо
 
-  const films = getFilms(key); // отримуємо масив фильмів з Local Storage по ключу
+  const films = await getFilms(key); // отримуємо масив фильмів з Local Storage по ключу
 
   // викликаємо функцію рендерінга розмітки, передаючи в неї масив фильмів
   renderMarkup(films);
