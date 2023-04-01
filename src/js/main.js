@@ -1,25 +1,39 @@
 import * as API from './api';
 import { renderCardMarkup } from './render-markup';
+import { pagination } from './pagination';
+import { scrollToTop } from './scrollToTop';
+import { renderStartPagination } from './pagination';
 
 const cardList = document.querySelector(`.moviesgallery-box`);
 
-//=======================================================
-// // приклад запросу через api
-// import * as API from './api';
-
 window.addEventListener('load', event => {
   try {
-    API.searchTrending(1)
-      .then(res => {
-        return renderCardMarkup(res);
-      })
-      .then(res => {
-        return (cardList.innerHTML = res);
-      });
+    API.searchTrending(1).then(res => {
+      const totalItems = res.total_results;
+      renderCardMarkup(res);
+      renderStartPagination(totalItems);
+    });
   } catch (error) {
     console.log(error);
   }
 });
+
+// // приклад запросу через api
+// import * as API from './api';
+
+// window.addEventListener('load', event => {
+//   try {
+//     API.searchTrending(1)
+//       .then(res => {
+//         return renderCardMarkup(res);
+//       })
+//       .then(res => {
+//         return (cardList.innerHTML = res);
+//       });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 // function cardMarkup(data) {}
 
