@@ -4,7 +4,7 @@ import { removeFilmFromLs } from './storage-service';
 import { getFilms } from './storage-service';
 
 // створимо функцію handleClick, яку будемо викликати під час кліку на кнопку:
-function handleClick(event) {
+async function handleClick(event) {
   const key = event.target.dataset.action; // отримуємо значення data-action кнопки
 
   if (!key) return; // якщо значення не задано, нічого не робимо
