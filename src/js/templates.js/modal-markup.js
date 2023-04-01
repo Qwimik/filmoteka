@@ -81,7 +81,7 @@ function createModalMarkup(movie) {
                 <li class="btn-list__item btn-list__item--film">
                   <button
                     type="button"
-                    class="button film__button upper"
+                    class="button film__button upper active"
                     id=${id}
                     data-list="watched"
                     data-action=${
