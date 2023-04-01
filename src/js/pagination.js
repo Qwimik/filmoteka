@@ -48,6 +48,20 @@ export function renderStartPagination(totalItems) {
   });
 }
 
+
+// Додаємо обробник події
+pagination.on('beforeMove', async evt => {
+  // Переміщуємось наверх сторінки
+  scrollToTop();
+  // Отримуємо номер поточної сторінки:
+  let currentPage = evt.page;
+  // Отримуємо елементи для нової сторінки:
+  const movies = await searchTrending(currentPage);
+  // Рендеримо отримані елементи:
+  renderCardMarkup(movies);
+
+});
+
 // // Додаємо обробник події пошуку за замовчуванням
 // pagination.on('beforeMove', async evt => {
 //   // Переміщуємось наверх сторінки
@@ -62,6 +76,7 @@ export function renderStartPagination(totalItems) {
 // });
 // pagination.movePageTo(currentPage);
 // renderCardMarkup(searchTrending(currentPage));
+
 // Reset pagination за потреби:
 // pagination.reset();
 // повна очистка пагінації:
