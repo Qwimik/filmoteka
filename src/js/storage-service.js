@@ -35,3 +35,11 @@ export function getFilms(key) {
   const data = localStorage.getItem(key);
   return JSON.parse(data);
 }
+
+export function isInclude(key, film) {
+  const allFilms = getFilms(key);
+  if (!allFilms) {
+    return false;
+  }
+  return allFilms.some(({ id }) => id === film.id);
+}
