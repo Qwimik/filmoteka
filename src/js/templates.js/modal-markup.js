@@ -36,7 +36,7 @@ function createModalMarkup(movie) {
 
   const markup = `
         <div class="modal__wrapping">
-          <div class="film__image">
+          <div class="film__image" width="375">
           <img
           class="image"
           src="${poster}"
