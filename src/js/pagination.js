@@ -38,19 +38,28 @@ const options = {
   },
 };
 export const pagination = new Pagination(container, options);
+export function renderStartPagination(totalItems) {
+  pagination.reset(totalItems);
+  pagination.on('beforeMove', async evt => {
+    scrollToTop();
+    const currentPage = evt.page;
+    const response = await API.searchTrending(currentPage);
+    renderCardMarkup(response);
+  });
+}
 
-// Додаємо обробник події пошуку за замовчуванням
-pagination.on('beforeMove', async evt => {
-  // Переміщуємось наверх сторінки
-  scrollToTop();
-  // Отримуємо номер поточної сторінки:
-  let currentPage = evt.page;
-  // pagination.movePageTo(currentPage);
-  // Отримуємо елементи для нової сторінки:
-  const currentMovies = await searchTrending(currentPage);
-  // Рендеримо отримані елементи:
-  renderCardMarkup(currentMovies);
-});
+// // Додаємо обробник події пошуку за замовчуванням
+// pagination.on('beforeMove', async evt => {
+//   // Переміщуємось наверх сторінки
+//   scrollToTop();
+//   // Отримуємо номер поточної сторінки:
+//   let currentPage = evt.page;
+//   // pagination.movePageTo(currentPage);
+//   // Отримуємо елементи для нової сторінки:
+//   const currentMovies = await searchTrending(currentPage);
+//   // Рендеримо отримані елементи:
+//   renderCardMarkup(currentMovies);
+// });
 // pagination.movePageTo(currentPage);
 // renderCardMarkup(searchTrending(currentPage));
 // Reset pagination за потреби:
