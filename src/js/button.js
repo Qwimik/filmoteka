@@ -1,13 +1,8 @@
 export class Button {
-  constructor(id, handler) {
+  constructor(id, handlerFunction) {
     this.button = document.querySelector(id);
+    console.log(this.button);
 
-    document.addEventListener('click', handler);
-  }
-
-  makeNewBtn(isActive) {
-    return `
-            <button class="button ${isActive ? 'active' : ''}"></button>
-        `;
+    this.button.addEventListener('click', handlerFunction);
   }
 }
