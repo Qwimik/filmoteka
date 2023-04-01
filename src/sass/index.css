@@ -1238,13 +1238,13 @@ h3 {
 
 body,
 html,
-#app {
+.app {
   margin: 0;
   width: 100%;
   height: 100%;
 }
 
-#app canvas {
+.app canvas {
   display: block;
   position: fixed;
   z-index: -1;
