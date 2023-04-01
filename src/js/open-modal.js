@@ -51,12 +51,14 @@ function btnHandler(e) {
       StorageService.removeFilmFromLs(storageKey, film);
       button.dataset.action = 'add';
       button.textContent = 'Add to watched';
+      button.blur();
       break;
     }
     case 'add': {
       StorageService.addFilmToLs(storageKey, film);
       button.dataset.action = 'remove';
       button.textContent = 'Remove from watched';
+      button.blur();
       break;
     }
 
