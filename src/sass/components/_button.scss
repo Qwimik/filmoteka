@@ -1,0 +1,44 @@
+.button {
+    color: $dark-color;
+    border-color: $dark-color;
+    border: 1px solid $dark-color;
+    border-radius: 5px;
+    background-image: -webkit-linear-gradient(45deg, $accent-color 50%, transparent 50%);
+    background-image: linear-gradient(45deg, $accent-color 50%, transparent 50%);
+    background-position: 100%;
+    background-size: 400%;
+    -webkit-transition: background 300ms ease-in-out, color 300ms ease-in-out;
+    transition: background 300ms ease-in-out, color 300ms ease-in-out;
+
+    &:hover,
+    &:focus {
+        color: $light-color;
+        background-position: 0;
+        border: 1px solid $accent-color;
+    }
+
+    &:focus {
+        transform: scale(1.1);
+    }
+}
+
+.active {
+    color: $light-color;
+    border: 1px solid $accent-color;
+    background-image: -webkit-linear-gradient(45deg, $accent-color 50%, transparent 50%);
+    background-image: linear-gradient(45deg, $accent-color 50%, transparent 50%);
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: 0%;
+    transition: background 300ms ease-in-out, color 300ms ease-in-out;
+
+    &:hover,
+    &:focus {
+        background-position: 100%;
+        color: $dark-color;
+    }
+
+    &:focus {
+        transform: scale(1.1);
+    }
+}
