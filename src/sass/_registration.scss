@@ -1,0 +1,137 @@
+.backdrop-registration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 100;
+  overflow: auto;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  visibility: visible;
+  pointer-events: auto;
+}
+.registration {
+  @media screen and (max-width: $min-tablet) {
+    width: 90%;
+    background-image: url(../images/header-fone-mob-1x-min.jpg);
+    @include retina {
+      background-image: url('../images/header-fone-mob-2x-min.jpg');
+    }
+  }
+  @media screen and (min-width: $tablet) {
+    background-image: url(../images/header-fone-tab-1x-min.jpg);
+    @include retina {
+      background-image: url('../images/header-fone-tab-2x-min.jpg');
+    }
+  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 20px 48px;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  background-image: url(../images/header-fone-1x-min.jpg);
+  @include retina {
+    background-image: url('../images/header-fone-2x-min.jpg');
+  }
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $footer-bg-color;
+  color: inherit;
+  border: 1px solid #0000001a;
+  z-index: 101;
+  font-family: $primary-font-family;
+  min-height: 35vh;
+  max-height: 90vh;
+  width: 702px;
+  overflow-y: auto;
+  transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 800ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 10px;
+
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $accent-color;
+    border-radius: 10px;
+  }
+}
+.registration-title {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  color: $light-color;
+}
+.registration__label {
+  margin-bottom: 20px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  color: var(--primary-bg-color);
+}
+.registration__input {
+  height: 15px;
+  width: 100%;
+  color: var(--primary-bg-color);
+  background: none;
+  border: #0000;
+  outline: none;
+  font-size: 14px;
+}
+.registration__label--text {
+  margin-right: 40px;
+}
+.registration__label--password {
+  margin-right: 16px;
+}
+.registration-submit {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 40px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: var(--primary-bg-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  max-width: 148px;
+  padding: 5px 41px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    background-color: $btn-hover-bg;
+    filter: $shadow;
+  }
+}
+.line-bottom {
+  position: relative;
+  width: 100%;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--primary-bg-color);
+  }
+}
