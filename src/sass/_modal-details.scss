@@ -68,6 +68,10 @@ h3 {
         max-width: 450px;
         padding: 48px 20px;
     }
+    .film__image {
+        max-width: 240px;
+        max-height: 357px;
+    }
 }
 
 @media screen and (min-width: $tablet) {
@@ -75,6 +79,10 @@ h3 {
         width: 704px;
         padding: 40px 36px;
     }
+     .film__image {
+         max-width: 264px;
+         max-height: 374px;
+        }
 }
 
 @media screen and (min-width: $desktop) {
@@ -82,6 +90,10 @@ h3 {
         width: 806px;
         padding: 40px 36px;
     }
+    .film__image {
+        max-width: 375px;
+        max-height: 478px;
+         }
 }
 
 .button__close {
