@@ -30,14 +30,19 @@
         @media screen and (min-width: 1280px) {
             width: calc((1280px - 96px) /3);
         }
+        cursor: pointer;
 }
+
 .moviesgallery-img{
     border-radius: 5px;
     transition: transform 0.5s;
+    
+    
       &:hover,
         &:focus{
-          -webkit-transform: scale3d(1.2, 1.2, 1);
-          transform: scale3d(1.2, 1.2, 1);
+          transform: scale(1.035);
+          filter: grayscale(0);
+          transition: filter 0.5s ease-in-out;
         }
     @media screen and (min-width: 768px) {
         height: 455px;

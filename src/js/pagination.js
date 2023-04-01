@@ -48,6 +48,7 @@ pagination.on('beforeMove', async evt => {
   const movies = await searchTrending(currentPage);
   // Рендеримо отримані елементи:
   renderCardMarkup(movies);
+
 });
 // Reset pagination за потреби:
 pagination.reset();
