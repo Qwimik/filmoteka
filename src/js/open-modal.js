@@ -27,7 +27,7 @@ function onCardClick(e) {
       const markup = createModalMarkup(res);
       modal.innerHTML = markup;
       currentFilm = res;
-      console.log(res);
+      // console.log(res);
 
       new Button('[data-list="watched"]', btnHandler);
       new Button('[data-list="queue"]', btnHandler);
