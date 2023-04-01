@@ -6,8 +6,9 @@ import 'tui-pagination/dist/tui-pagination.css';
 import * as API from './api';
 import { renderCardMarkup } from './render-markup';
 import { searchTrending, searchMovieId, searchMovieTitle } from './api';
+import { scrollToTop } from './scrollToTop';
 // Робимо екземпляр пагінації, вказавши контейнер та параметри:
-const container = document.getElementById('pagination');
+const container = document.querySelector('#pagination');
 // totalItems: загальна кількість елементів, які будуть розділені на сторінки.
 // itemsPerPage: кількість елементів, які відображаються на одній сторінці.
 // visiblePages: кількість сторінок, які відображаються одночасно в пагінації.
@@ -37,6 +38,16 @@ const options = {
   },
 };
 export const pagination = new Pagination(container, options);
+export function renderStartPagination(totalItems) {
+  pagination.reset(totalItems);
+  pagination.on('beforeMove', async evt => {
+    scrollToTop();
+    const currentPage = evt.page;
+    const response = await API.searchTrending(currentPage);
+    renderCardMarkup(response);
+  });
+}
+
 
 // Додаємо обробник події
 pagination.on('beforeMove', async evt => {
@@ -50,22 +61,29 @@ pagination.on('beforeMove', async evt => {
   renderCardMarkup(movies);
 
 });
+
+// // Додаємо обробник події пошуку за замовчуванням
+// pagination.on('beforeMove', async evt => {
+//   // Переміщуємось наверх сторінки
+//   scrollToTop();
+//   // Отримуємо номер поточної сторінки:
+//   let currentPage = evt.page;
+//   // pagination.movePageTo(currentPage);
+//   // Отримуємо елементи для нової сторінки:
+//   const currentMovies = await searchTrending(currentPage);
+//   // Рендеримо отримані елементи:
+//   renderCardMarkup(currentMovies);
+// });
+// pagination.movePageTo(currentPage);
+// renderCardMarkup(searchTrending(currentPage));
+
 // Reset pagination за потреби:
-pagination.reset();
+// pagination.reset();
 // повна очистка пагінації:
-const clearHTMLPagination = () => {
-  pagination.innerHTML = '';
-};
-// Функція для переміщення наверх сторінки
-function scrollToTop() {
-  if (window.pageYOffset > 0) {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }
-}
+// const clearHTMLPagination = () => {
+//   pagination.innerHTML = '';
+// };
+
 // paganation.on('afterMove', event => {
-//   const currentPage = event.page;
-//   console.log(currentPage);
+//   renderCardMarkup(searchTrending(currentPage));
 // });

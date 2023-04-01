@@ -1,4 +1,5 @@
 import placeholder from '../../images/placeholder.webp';
+import { KEYS, isInclude } from './../storage-service';
 
 function createModalMarkup(movie) {
   const {
@@ -81,30 +82,36 @@ function createModalMarkup(movie) {
                   <button
                     type="button"
                     class="button film__button upper"
-                    data-addto="watched"
+                    id=${id}
+                    data-list="watched"
+                    data-action=${
+                      isInclude(KEYS.WATCHED, movie) ? 'remove' : 'add'
+                    }
                   >
-                    Add to watched
+                    ${
+                      isInclude(KEYS.WATCHED, movie)
+                        ? 'Remove from watched'
+                        : 'Add to watched'
+                    }
                   </button>
                 </li>
                 <li class="btn-list__item btn-list__item--film">
                   <button
                     type="button"
                     class="button film__button upper"
-                    data-addto="queue"
+                    id=${id}
+                    data-list="queue"
+                    data-action=${
+                      isInclude(KEYS.QUEUE, movie) ? 'remove' : 'add'
+                    }
                   >
-                    Add to queue
+                    ${
+                      isInclude(KEYS.QUEUE, movie)
+                        ? 'Remove from queue'
+                        : 'Add to queue'
+                    }
                   </button>
                 </li>
-                <li class="btn-list__item btn-list__item--film">
-                <button
-                type="button"
-                class="button film__button--recommended film__button upper"
-                data-id = ${id}
-                >
-                Similar
-                </button>
-                </li>
-
               </ul>
             </div>
           </div>
