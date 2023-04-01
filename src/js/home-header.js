@@ -23,10 +23,11 @@ async function onSubmitForm(e) {
       return errorText.classList.remove('visually-hidden');
     }
     const totalItems = response.total_results;
-    // Скидаємо пагінацію для поточних значень пошуку
-    pagination.reset(totalItems);
+    // Скидаємо пагінацію для пошуку за замовчуванням
+    pagination.off();
     renderCardMarkup(response);
-    // Додаємо обробник події пагінації для різних сторінок пошуку
+    // Додаємо обробник події пагінації для пошуку за назвою
+    pagination.reset(totalItems);
     pagination.on('beforeMove', async evt => {
       scrollToTop();
       const currentPage = evt.page;

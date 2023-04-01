@@ -5,7 +5,7 @@ import { scrollToTop } from './scrollToTop';
 import { renderStartPagination } from './pagination';
 
 const cardList = document.querySelector(`.moviesgallery-box`);
-
+// пошук та рендер за замовчуванням головної сторінки при загрузці
 window.addEventListener('load', event => {
   try {
     API.searchTrending(1).then(res => {
