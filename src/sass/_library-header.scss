@@ -15,6 +15,7 @@
 	}
 
 	&__library{
+		opacity: 0.9;
 		background-image: url('../images/header-fone-library-mob-1x-min.jpg');
 
 	@include retina {
