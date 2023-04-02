@@ -1,9 +1,14 @@
 import { KEYS, getFilms } from './storage-service';
 import { genres } from '../data/genres.js';
+
 const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
 const cardList = document.querySelector('[data-set="library-films"]');
-const test = genres;
+
+const changedKey = genres;
 const watchArray = getFilms(KEYS.WATCHED);
+
+const remove = document.querySelector('[data-action="remove"]');
+
 
 export function renderCardMarkup(data) {
   const singleCard = data
@@ -23,12 +28,11 @@ export function renderCardMarkup(data) {
         let itemGenre = [];
         let finalCardGenre = [];
         genres.forEach(function (item) {
-          let genre = test.map(genre => {
-            if (item === genre.id) {
+          let genre = changedKey.map(genre => {
+            if (item.id === genre.id) {
               itemGenre.push(genre.name);
             }
           });
-
 
           if (!itemGenre.length) {
             finalCardGenre = 'Unknown genre';
@@ -37,7 +41,6 @@ export function renderCardMarkup(data) {
           } else {
             finalCardGenre = itemGenre.join(`, `);
           }
-
         });
 
         let cardTitle = ``;
@@ -71,7 +74,10 @@ export function renderCardMarkup(data) {
       }
     )
     .join(``);
-  cardList.innerHTML = singleCard;
+  if (cardList !== null) {
+    cardList.innerHTML = singleCard;
+  }
+
   return singleCard;
 }
 renderCardMarkup(watchArray);

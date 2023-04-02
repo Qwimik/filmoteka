@@ -1,38 +1,39 @@
 .header {
   opacity: 0.9;
-  background-image: url('../images/header-fone-mob-1x-min.jpg');
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-mob-1x-min.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 230px;
   padding-top: 44px;
   padding-bottom: 44px;
-  min-width: 320px;
-  max-width: 767px;
+  width: 100%;
+  max-width: 480px;
   margin: 0 auto;
 
   @include retina {
-    background-image: url('../images/header-fone-mob-2x-min.jpg');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-mob-2x-min.jpg');
   }
 
   @include tablet {
     padding-top: 40px;
     padding-bottom: 45px;
-    min-width: 768px;
-    max-width: 1279px;
-    background-image: url('../images/header-fone-tab-1x-min.jpg');
+    max-width: 768px;
+    background-image: llinear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-tab-1x-min.jpg');
+		opacity: 0.9;
 
-		opacity: 0.9etina {
-      background-image: url('../images/header-fone-tab-2x-min.jpg');
+    @include retina {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-tab-2x-min.jpg');
     }
   }
 
   @include desktop {
     padding-bottom: 44px;
     max-width: 1280px;
-    background-image: url('../images/header-fone-1x-min.jpg');
+    opacity: 0.9;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-1x-min.jpg');
 
     @include retina {
-      background-image: url('../images/header-fone-2x-min.jpg');
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-2x-min.jpg');
     }
   }
 
@@ -61,13 +62,13 @@
       display: flex;
       align-items: center;
 
-			@include tablet{
-				column-gap: 10px;
-			}
+      @include tablet {
+        column-gap: 10px;
+      }
 
-			@include desktop{
-				column-gap: 12x;
-			}
+      @include desktop {
+        column-gap: 12x;
+      }
     }
 
     &-svg {
@@ -91,6 +92,7 @@
     display: flex;
     gap: 20px;
     text-transform: uppercase;
+    margin-left: auto;
 
     @include desktop {
       gap: 39px;
@@ -130,21 +132,20 @@
       }
 
       &:after {
-      content: '';
-      width: 100%;
-      height: 0.1px;
-      background-color: var(--primary-bg-color);
-      position: absolute;
-      bottom: -4px;
+        content: '';
+        width: 100%;
+        height: 0.1px;
+        background-color: var(--primary-bg-color);
+        position: absolute;
+        bottom: -4px;
 
-    @include tablet {
-      width: 336px;
-    }
+        @include tablet {
+          width: 336px;
+        }
 
-    @include desktop{
-      width: 100%;
-    }
-
+        @include desktop {
+          width: 100%;
+        }
       }
     }
 
@@ -155,6 +156,8 @@
 
     &-input {
       border: none;
+      border-radius: 5px;
+      padding: 0 3px;
       border-color: transparent;
       background: transparent;
       outline: none;
@@ -189,7 +192,7 @@
       line-height: calc(16 / 14);
       color: var(--accent-menu-color);
 
-      @include tablet{
+      @include tablet {
         max-width: 393px;
         text-align: center;
       }
@@ -211,4 +214,14 @@
     height: 3px;
     background-color: var(--accent-menu-color);
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #10151D;
+  /* колір фону */
+  -webkit-text-fill-color: var(--primary-bg-color);
+  /* колір тексту */
 }

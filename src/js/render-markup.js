@@ -76,6 +76,9 @@ export function renderCardMarkup(data) {
       }
     )
     .join(``);
-  cardList.innerHTML = singleCard;
+  if (cardList !== null) {
+    cardList.innerHTML = singleCard;
+  }
+
   return singleCard;
 }
