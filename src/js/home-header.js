@@ -8,8 +8,9 @@ const formEl = document.querySelector('.header__form');
 const inputForm = document.querySelector('.header__form-input');
 // const searchIcon = document.querySelector('.header__form-button');
 const errorText = document.querySelector('.header__form-text');
-
-formEl.addEventListener('submit', onSubmitForm);
+if (formEl !== null) {
+  formEl.addEventListener('submit', onSubmitForm);
+}
 async function onSubmitForm(e) {
   e.preventDefault();
   const text = e.target.elements['movie-search'].value;
@@ -37,7 +38,7 @@ async function onSubmitForm(e) {
   } catch (error) {
     console.log(error);
   }
-  inputForm.value = "";
+  inputForm.value = '';
 }
 
 // const fetchMovies = name => {
@@ -70,4 +71,3 @@ async function onSubmitForm(e) {
 //     });
 //   };
 // }))
-
