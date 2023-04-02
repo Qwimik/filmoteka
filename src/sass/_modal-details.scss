@@ -141,23 +141,20 @@ h3 {
     // }
   
 }
-
-.film__image img {
-    width: 100%;
+.film__image {
     @media screen and (max-width: $min-tablet) {
-            min-width: 230px;  
-            max-width: 240px;
+            width: 240px;
         }
     
         @media screen and (min-width: $tablet) {
-            min-width: 259px;
-            max-width: 264px;
+           width: 264px;
         }
-    
-        @media screen and (min-width: $desktop) {
-        min-width: 370px;
-            max-width: 375px;
-        }
+ 
+}
+
+.film__image img {
+    width: 100%;
+   
 }
 .film__info {
     display: flex;
