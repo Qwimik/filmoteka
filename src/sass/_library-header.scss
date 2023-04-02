@@ -15,6 +15,7 @@
 	}
 
 	&__library{
+		opacity: 0.9;
 		background-image: url('../images/header-fone-library-mob-1x-min.jpg');
 
 	@include retina {
@@ -45,17 +46,39 @@
 		align-items: center;
 		color: var(--primary-bg-color);
 		max-height: 24px;
+
+		&-wrap{
+			display: flex;
+      align-items: center;
+
+			@include tablet{
+				column-gap: 10px;
+			}
+
+			@include desktop{
+				column-gap: 12x;
+			}
+		}
 	}
 
 	&__logo {
-		margin-right: 112px;
+		/* margin-right: 112px; */
+		margin-right: 61px;
 
-		@include tablet {
+		/* @include tablet {
 			margin-right: 387px;
 		}
 
 		@include desktop {
 			margin-right: 898px;
+		} */
+
+		@include tablet {
+			margin-right: 326px;
+		}
+
+		@include desktop {
+			margin-right: 837px;
 		}
 
 		&-wrap {
@@ -64,10 +87,6 @@
 				align-items: center;
 				gap: 10px;
 			}
-		}
-
-		&-svg {
-			/* fill: var(--primary-bg-color); */
 		}
 
 		&-name {
@@ -84,7 +103,7 @@
 
 	&__list {
 		display: flex;
-		gap: 40px;
+		gap: 20px;
 		text-transform: uppercase;
 
 		@include desktop {
@@ -127,8 +146,6 @@
 			gap: 16px;
 		}
 	}
-
-	&__item {}
 
 	&__button {
 		height: 44px;

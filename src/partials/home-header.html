@@ -3,20 +3,11 @@
     <div class="container__wrap">
     <nav class="header__menu">
       <div class="header__logo">
-        <a class="header__logo-link ink" href="./index.html">
-          <div class="header__logo-wrap">
-<!--           <svg class="header__logo-svg" width="24" height="24">
-            <use href="./images/film-logo.svg"></use>
-          </svg> -->
-
-              <svg class="header__logo-svg" width="24" height="24" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                <title>film-logo</title>
-                <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667"
-                  stroke="var(--primary-bg-color)"
-                  d="M26.427 2.667h-20.853c-1.605 0-2.907 1.301-2.907 2.907v0 20.853c0 1.605 1.301 2.907 2.907 2.907v0h20.853c1.605 0 2.907-1.301 2.907-2.907v0-20.853c0-1.605-1.301-2.907-2.907-2.907v0zM9.333 2.667v26.667M22.667 2.667v26.667M2.667 16h26.667M2.667 9.333h6.667M2.667 22.667h6.667M22.667 22.667h6.667M22.667 9.333h6.667">
-                </path>
-              </svg>
-
+        <a class="header__logo-link link" href="./index.html">
+          <div class="header__menu-wrap">
+            <svg class="header__logo-svg" width="24" height="24">
+              <use href="/src/images/new-symbol-defs.svg#icon-film"></use>
+            </svg>
           <span class="header__logo-name">Filmoteka</span> 
           </div>
         </a>
@@ -26,7 +17,14 @@
           <a class="header__list-link" href="./index.html">home</a>
         </li>
         <li class="header__list-item">
-          <a class="header__list-link" href="./library.html">my library</a>
+          <a class="header__list-link" href="./library.html" id="btnLibrary">my library</a>
+        </li>
+        <li class="header__list-item">
+          <a class="header__list-link visually-hidden" href="./index.html" id="btnSignOut">
+              <svg class="header__logo-svg" width="18" height="18">
+                <use href="/src/images/new-symbol-defs.svg#icon-exit"></use>
+              </svg>
+          </a>
         </li>
       </ul>
     </nav>
@@ -34,18 +32,9 @@
       <div class="header__form-wrap">
       <input class="header__form-input" type="text" name="movie-search" placeholder="Movie search" required/>
       <span class="header__form-icon">
-<!--         <svg class="header__form-svg" width="8" height="8">
-          <use href="/src/images/newSVG/film.svg"></use>
-        </svg> -->
-
-        <svg class="header__form-svg" width="12" height="12" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-          <title>search-logo</title>
-          <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667"
-            stroke="var(--primary-bg-color)"
-            d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667s-4.776-10.667-10.667-10.667v0c-5.891 0-10.667 4.776-10.667 10.667s4.776 10.667 10.667 10.667v0zM28 28l-5.8-5.8">
-          </path>
+        <svg class="header__logo-svg" width="12" height="12">
+          <use href="/src/images/new-symbol-defs.svg#icon-search"></use>
         </svg>
-
       </span>
       <button class="header__form-button" type="submit">OK</button>
       </div>
