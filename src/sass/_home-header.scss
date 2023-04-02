@@ -6,6 +6,8 @@
   min-height: 230px;
   padding-top: 44px;
   padding-bottom: 44px;
+  min-width: 320px;
+  max-width: 767px;
 
   @include retina {
     background-image: url('../images/header-fone-mob-2x-min.jpg');
@@ -14,6 +16,8 @@
   @include tablet {
     padding-top: 40px;
     padding-bottom: 45px;
+    min-width: 768px;
+    max-width: 1279px;
     background-image: url('../images/header-fone-tab-1x-min.jpg');
 
 		opacity: 0.9etina {
@@ -23,6 +27,7 @@
 
   @include desktop {
     padding-bottom: 44px;
+    max-width: 1280px;
     background-image: url('../images/header-fone-1x-min.jpg');
 
     @include retina {
