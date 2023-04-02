@@ -1,27 +1,53 @@
-<div class="backdrop-registration  is-hidden" data-set="registration">
-  <form class="registration">
+<div class="backdrop-registration is-hidden" data-set="registration">
+  <form class="registration" id="formReg">
     <button class="button__close" data-set="close-registration" type="button">
       <svg class="button__close__icon" width="30" height="30">
         <use href="././images/icon-close.svg#close"></use>
       </svg>
     </button>
     <h2 class="registration-title">Registration</h2>
-    <label class="registration__label"><span class="registration__label--text">Login</span>
-      <div class="line-bottom"><input class="registration__input" type="text" name="username" placeholder="User name" required></div>
-    </label>
-    <label class="registration__label"><span class="registration__label--text">Email</span>
+    <label class="registration__label"
+      ><span class="registration__label--text">Login</span>
       <div class="line-bottom">
-        <input class="registration__input" type="text" name="email" placeholder="Enter your email" required>
+        <input
+          class="registration__input"
+          type="text"
+          name="username"
+          placeholder="User name"
+          required
+        />
       </div>
     </label>
-    <label class="registration__label"><span class="registration__label--password">Password</span>
+    <label class="registration__label"
+      ><span class="registration__label--text">Email</span>
       <div class="line-bottom">
-        <input class="registration__input" type="text" name="password" placeholder="Enter password">
+        <input
+          class="registration__input"
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+    </label>
+    <label class="registration__label"
+      ><span class="registration__label--password">Password</span>
+      <div class="line-bottom">
+        <input
+          class="registration__input"
+          type="password"
+          name="password"
+          placeholder="Enter password"
+        />
       </div>
     </label>
     <div class="registration__btn-container">
-    <button class="registration-submit" type="submit" disabled>Register</button>
-    <button type="button" class="come-back registration__label">&#8592; come back</button>
+      <button class="registration-submit" type="submit" id="btnReg">
+        Register
+      </button>
+      <button type="button" class="come-back registration__label">
+        &#8592; come back
+      </button>
     </div>
   </form>
 </div>

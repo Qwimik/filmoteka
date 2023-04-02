@@ -2,6 +2,7 @@ import * as API from './api';
 import { Button } from './button';
 import * as StorageService from './storage-service';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { updateDB } from './firebase';
 
 import {
   createModalMarkup,
@@ -21,28 +22,27 @@ function onCardClick(e) {
   const cardId = card.dataset.id;
   // console.log(cardId);
 
-  try {
-    API.searchMovieId(cardId).then(response => {
-      if (response.status === "Released") {
-        return response
+  API.searchMovieId(cardId)
+    .then(response => {
+      if (response.status === 'Released') {
+        return response;
       }
     })
-      .then(response => {
-        modalBackdrop.classList.remove('is-hidden');
-        const markup = createModalMarkup(response);
-        modal.innerHTML = markup;
-        currentFilm = response;
-        // console.log(res);
+    .then(response => {
+      modalBackdrop.classList.remove('is-hidden');
+      const markup = createModalMarkup(response);
+      modal.innerHTML = markup;
+      currentFilm = response;
+      // console.log(res);
 
-        new Button('[data-list="watched"]', btnHandler);
-        new Button('[data-list="queue"]', btnHandler);
-      })
-      .catch(error => {
-        Notify.failure('Oooopsss, something went WRONG!!!');
-        console.log('error is', error);
-      });
-  };
-};
+      new Button('[data-list="watched"]', btnHandler);
+      new Button('[data-list="queue"]', btnHandler);
+    })
+    .catch(error => {
+      Notify.failure('Oooopsss, something went WRONG!!!');
+      console.log('error is', error);
+    });
+}
 
 function btnHandler(e) {
   const button = e.target;
@@ -52,6 +52,7 @@ function btnHandler(e) {
       ? StorageService.KEYS.WATCHED
       : StorageService.KEYS.QUEUE;
   const currentAction = button.dataset.action;
+  const userUid = JSON.parse(localStorage.getItem('user'));
 
   switch (currentAction) {
     case 'remove': {
@@ -59,6 +60,7 @@ function btnHandler(e) {
       button.dataset.action = 'add';
       button.textContent = 'Add to watched';
       button.blur();
+      updateDB(userUid.uid);
       break;
     }
     case 'add': {
@@ -66,6 +68,7 @@ function btnHandler(e) {
       button.dataset.action = 'remove';
       button.textContent = 'Remove from watched';
       button.blur();
+      updateDB(userUid.uid);
       break;
     }
 
