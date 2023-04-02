@@ -27,15 +27,19 @@ export function renderCardMarkup(data) {
               itemGenre.push(genre.name);
             }
           });
-          
+
           // finalCardGenre = itemGenre.join(`, `);
-           if (!itemGenre.length) { finalCardGenre = "Unknown genre"; }
-            else if (itemGenre.length > 3) { finalCardGenre = `${itemGenre[0]}, ${itemGenre[1]}, ${itemGenre[2]}, Other`; }
-            else { finalCardGenre =itemGenre.join(`, `) };
-//         }
+          if (!itemGenre.length) {
+            finalCardGenre = 'Unknown genre';
+          } else if (itemGenre.length > 2) {
+            finalCardGenre = `${itemGenre[0]}, ${itemGenre[1]}, Other`;
+          } else {
+            finalCardGenre = itemGenre.join(`, `);
+          }
+          //         }
         });
-// function finalCardGenre(array) {
-//            
+        // function finalCardGenre(array) {
+        //
         // const genres = finalCardGenre(genre_ids);
         let cardTitle = ``;
         if (title) {
