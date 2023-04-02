@@ -96,6 +96,7 @@ h3 {
   }
 }
 
+
 .button__close {
   position: absolute;
   padding: 0;
@@ -150,7 +151,16 @@ h3 {
     min-width: 264px;
   }
 }
+.film__image {
+    @media screen and (max-width: $min-tablet) {
+            width: 240px;
+        }
+}
 
+.film__image img {
+    width: 100%;
+   
+}
 .film__info {
   display: flex;
   flex-direction: column;
