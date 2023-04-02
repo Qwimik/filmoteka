@@ -30,56 +30,64 @@ const formReg = document.querySelector('#formReg');
 const formSign = document.querySelector('#formSign');
 const btnSignOut = document.querySelector('#btnSignOut');
 
+let isUserLogin = getFilms('user');
+
+if (!isUserLogin) {
+  refs.open.addEventListener('click', onLibraryClick);
+}
+
+function onLibraryClick() {
+  if (!isUserLogin) {
+    refs.open.removeAttribute('href');
+    refs.backdrop.classList.remove('is-hidden');
+    Notiflix.Notify.warning('Oops, please Sign In first', {
+      position: 'center-top',
+    });
+  }
+}
+
 if (btnSignOut) {
-  btnSignOut.addEventListener('click', () => {
-    Confirm.show(
-      'Filmoteka',
-      'Are you sure?',
-      'Yes',
-      'No',
-      () => {
-        signOut(auth)
-          .then(() => {
-            Notiflix.Notify.warning('See you soon!', {
-              position: 'center-top',
-            });
-            // notiflix - вихід з акаунту
-            localStorage.removeItem(KEYS.WATCHED);
-            localStorage.removeItem(KEYS.QUEUE);
-            localStorage.removeItem('user');
-            btnSignOut.classList.add('visually-hidden');
-            const elem = document.querySelector('.header__list-link');
+  btnSignOut.addEventListener('click', onBtnSignOutClick);
+}
+
+function onBtnSignOutClick() {
+  Confirm.show(
+    'Filmoteka',
+    'Are you sure?',
+    'Yes',
+    'No',
+    () => {
+      signOut(auth)
+        .then(() => {
+          Notiflix.Notify.warning('See you soon!', {
+            position: 'center-top',
+          });
+          // notiflix - вихід з акаунту
+          localStorage.removeItem(KEYS.WATCHED);
+          localStorage.removeItem(KEYS.QUEUE);
+          localStorage.removeItem('user');
+          isUserLogin = null;
+          const elem = document.querySelector('.header__list-link');
+          if (window.location.pathname === '/library.html') {
             setInterval(() => {
               elem.click();
             }, 1000);
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      },
-      () => {
-        //  no
-      },
-      {
-        backgroundColor: '#eee',
-        titleColor: '#ff6b01',
-        okButtonBackground: '#ff6b01',
-      }
-    );
-  });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    () => {
+      //  no
+    },
+    {
+      backgroundColor: '#eee',
+      titleColor: '#ff6b01',
+      okButtonBackground: '#ff6b01',
+    }
+  );
 }
-
-// if (refs.open) {
-//   refs.open.addEventListener('click', () => {
-//     if (auth.currentUser === null) {
-//       refs.open.removeAttribute('href');
-//       refs.backdrop.classList.remove('is-hidden');
-//       Notiflix.Notify.warning('Oops, please Sign In first', {
-//         position: 'center-top',
-//       });
-//     }
-//   });
-// }
 
 // registration
 if (formReg) {
@@ -96,6 +104,7 @@ if (formReg) {
         // тут ховаємо можливість логіну
         user = userCredential.user;
         refs.open.setAttribute('href', './library.html');
+        refs.open.removeEventListener('click', onLibraryClick);
         refsRegistration.backdrop.classList.add('is-hidden');
         set(ref(database, 'users/' + user.uid), {
           email: email,
@@ -111,7 +120,7 @@ if (formReg) {
             // The write failed...
             console.log(error);
           });
-        if (!isModalOpen.isOpen) {
+        if (window.location.pathname === '/index.html' && !isModalOpen.isOpen) {
           setInterval(() => {
             refs.open.click();
           }, 1000);
@@ -144,11 +153,12 @@ if (formSign) {
         localStorage.setItem('user', JSON.stringify(user));
         refs.backdrop.classList.add('is-hidden');
         refs.open.setAttribute('href', './library.html');
+        refs.open.removeEventListener('click', onLibraryClick);
         Notiflix.Notify.success('Welcome!', {
           position: 'center-top',
         });
         getFilmsFromDB(user);
-        if (!isModalOpen.isOpen) {
+        if (window.location.pathname === '/index.html' && !isModalOpen.isOpen) {
           setInterval(() => {
             refs.open.click();
           }, 1000);
@@ -198,8 +208,10 @@ function getFilmsFromDB(user) {
   let dataFilms;
   onValue(starCountRef, snapshot => {
     const data = snapshot.val();
-    if (data.films) {
+    if (data.films.watched) {
       localStorage.setItem(KEYS.WATCHED, JSON.stringify(data.films.watched));
+    }
+    if (data.films.queue) {
       localStorage.setItem(KEYS.QUEUE, JSON.stringify(data.films.queue));
     }
   });

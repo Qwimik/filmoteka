@@ -19,28 +19,28 @@
 		opacity: 0.9;
 		min-width: 320px;
 		max-width: 767px;
-		background-image: url('../images/header-fone-library-mob-1x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-mob-1x-min.jpg');
 
 	@include retina {
-		background-image: url('../images/header-fone-library-mob-2x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-mob-2x-min.jpg');
 	}
 
 	@include tablet {
-		background-image: url('../images/header-fone-library-tab-1x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-tab-1x-min.jpg');
 		min-width: 768px;
 		max-width: 1279px;
 
 	@include retina {
-		background-image: url('../images/header-fone-library-tab-2x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-tab-2x-min.jpg');
 	}
 	}
 
 	@include desktop {
-		background-image: url('../images/header-fone-library-1x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-1x-min.jpg');
 		max-width: 1280px;
 
 	@include retina {
-		background-image: url('../images/header-fone-library-2x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-2x-min.jpg');
 	}}
 }
 
@@ -57,21 +57,21 @@
 			display: flex;
       align-items: center;
 
-			@include tablet{
-				column-gap: 10px;
-			}
+      @include tablet {
+        column-gap: 10px;
+      }
 
-			@include desktop{
-				column-gap: 12x;
-			}
-		}
-	}
+      @include desktop {
+        column-gap: 12x;
+      }
+    }
+  }
 
-	&__logo {
-		/* margin-right: 112px; */
-		margin-right: 61px;
+  &__logo {
+    /* margin-right: 112px; */
+    margin-right: 61px;
 
-		/* @include tablet {
+    /* @include tablet {
 			margin-right: 387px;
 		}
 
@@ -79,95 +79,94 @@
 			margin-right: 898px;
 		} */
 
-		@include tablet {
-			margin-right: 326px;
-		}
+    @include tablet {
+      margin-right: 326px;
+    }
 
-		@include desktop {
-			margin-right: 837px;
-		}
+    @include desktop {
+      margin-right: 837px;
+    }
 
-		&-wrap {
-			@include tablet {
-				display: flex;
-				align-items: center;
-				gap: 10px;
-			}
-		}
+    &-wrap {
+      @include tablet {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    }
 
-		&-name {
-			display: none;
+    &-name {
+      display: none;
 
-			@include tablet {
-				display: block;
-				font-size: 30px;
-				line-height: 1.16;
-				color: var(--primary-bg-color);
-			}
-		}
-	}
+      @include tablet {
+        display: block;
+        font-size: 30px;
+        line-height: 1.16;
+        color: var(--primary-bg-color);
+      }
+    }
+  }
 
-	&__list {
-		display: flex;
-		gap: 20px;
-		text-transform: uppercase;
+  &__list {
+    display: flex;
+    gap: 20px;
+    text-transform: uppercase;
 
-		@include desktop {
-			gap: 39px;
-		}
-	}
+    @include desktop {
+      gap: 39px;
+    }
+  }
 }
 
 .current {
-	&:after {
-		content: '';
-		display: block;
-		width: 100%;
-		height: 3px;
-		background-color: var(--accent-menu-color);
-	}
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-menu-color);
+  }
 }
 
 .filter {
+  &__wrap {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
 
-	&__wrap {
-		margin-top: 60px;
-		display: flex;
-		justify-content: center;
+    @include tablet {
+      margin-top: 40px;
+    }
+  }
 
-		@include tablet {
-			margin-top: 40px;
-		}
-	}
+  &__list {
+    display: flex;
+    gap: 20px;
 
-	&__list {
-		display: flex;
-		gap: 20px;
+    @include tablet {
+      gap: 32px;
+    }
 
-		@include tablet {
-			gap: 32px;
-		}
+    @include desktop {
+      gap: 16px;
+    }
+  }
 
-		@include desktop {
-			gap: 16px;
-		}
-	}
+  &__button {
+    height: 44px;
+    width: 130px;
 
-	&__button {
-		height: 44px;
-		width: 130px;
+    @include tablet {
+      width: 152;
+    }
 
-		@include tablet {
-			width: 152;
-		}
+    @include desktop {
+      height: 42px;
+      width: 147px;
+    }
+  }
 
-		@include desktop {
-			height: 42px;
-			width: 147px;
-		}
-	}
-
-	&__text {
-		text-transform: uppercase;
-	}
+  &__text {
+    text-transform: uppercase;
+  }
 }

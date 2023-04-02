@@ -3,24 +3,24 @@
 const modalBackdrop = document.querySelector('.modal__backdrop');
 const modal = document.querySelector('.modal');
 const movieItem = document.querySelector('.moviesgallery-item');
-const closeButton = document.querySelector(".button__close");
+const closeButton = document.querySelector('.button__close');
 
 const closeModal = () => {
-  modalBackdrop.classList.add("is-hidden");
+  modalBackdrop.classList.add('is-hidden');
+  if (window.location.pathname === '/library.html') {
+    location.reload();
+  }
 };
 
-closeButton.addEventListener("click", closeModal);
+closeButton.addEventListener('click', closeModal);
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
     closeModal();
   }
 });
-modalBackdrop.addEventListener("click", (e) => {
+modalBackdrop.addEventListener('click', e => {
   if (e.target === modalBackdrop) {
     closeModal();
   }
 });
-
-
-

@@ -1,14 +1,13 @@
 import { KEYS, getFilms } from './storage-service';
 import { genres } from '../data/genres.js';
-
-const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
+const queue = document.querySelector('[data-active="queue"]');
 const cardList = document.querySelector('[data-set="library-films"]');
 
 const changedKey = genres;
 const watchArray = getFilms(KEYS.WATCHED);
+const queueArray = getFilms(KEYS.QUEUE);
 
-const remove = document.querySelector('[data-action="remove"]');
-
+const remove = document.querySelector('[data-list="watched"]');
 
 export function renderCardMarkup(data) {
   const singleCard = data
@@ -60,7 +59,7 @@ export function renderCardMarkup(data) {
         return `<li class="moviesgallery-item" data-id="${id}">
             <div class="moviesgallery-wrap">
             <div class="thumb">
-              <img class="moviesgallery-img" src="${POSTER_BASE_URL}${poster_path}" alt="${title}" width="440" />
+              <img class="moviesgallery-img" src="${`https://image.tmdb.org/t/p/w500`}${poster_path}" alt="${title}" width="440" />
             </div>
               <div class="moviesgallery-text">
                 <p class="moviesgallery-text-title">${cardTitle}</p>
@@ -80,4 +79,14 @@ export function renderCardMarkup(data) {
 
   return singleCard;
 }
-renderCardMarkup(watchArray);
+
+if (window.location.pathname === '/library.html') {
+  renderCardMarkup(watchArray);
+}
+
+if (queue !== null) {
+  queue.addEventListener('click', () => {
+    cardList.innerHTML = '';
+    renderCardMarkup(queueArray);
+  });
+}
