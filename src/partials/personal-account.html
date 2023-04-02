@@ -1,5 +1,10 @@
-<div class="backdrop-registration">
+<div class="backdrop-registration is-hidden" data-set="personal-cabinet">
   <form class="registration">
+    <button class="button__close" data-set="close-cabinet" type="button">
+      <svg class="button__close__icon" width="30" height="30">
+        <use href="././images/icon-close.svg#close"></use>
+      </svg>
+    </button>
     <h2 class="registration-title">Personal Cabinet</h2>
     <label class="registration__label"><span class="registration__label--text">Login</span>
       <div class="line-bottom"><input class="registration__input" type="text" name="username" placeholder="User name"
@@ -10,6 +15,10 @@
         <input class="registration__input" type="text" name="password" placeholder="Enter password">
       </div>
     </label>
-    <button class="registration-submit" type="submit" disabled>Sign in</button>
+    <div class="registration__btn-container">
+      <button class="registration-submit" type="submit" disabled>Sign in</button>
+      <button class="registration-submit registration-submit--registaration" data-set="registration-open"
+        type="button">Registration</button>
+    </div>
   </form>
 </div>

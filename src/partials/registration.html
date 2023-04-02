@@ -1,5 +1,10 @@
-<div class="backdrop-registration">
+<div class="backdrop-registration  is-hidden" data-set="registration">
   <form class="registration">
+    <button class="button__close" data-set="close-registration" type="button">
+      <svg class="button__close__icon" width="30" height="30">
+        <use href="././images/icon-close.svg#close"></use>
+      </svg>
+    </button>
     <h2 class="registration-title">Registration</h2>
     <label class="registration__label"><span class="registration__label--text">Login</span>
       <div class="line-bottom"><input class="registration__input" type="text" name="username" placeholder="User name" required></div>
@@ -14,6 +19,9 @@
         <input class="registration__input" type="text" name="password" placeholder="Enter password">
       </div>
     </label>
+    <div class="registration__btn-container">
     <button class="registration-submit" type="submit" disabled>Register</button>
+    <button type="button" class="come-back registration__label">&#8592; come back</button>
+    </div>
   </form>
 </div>
