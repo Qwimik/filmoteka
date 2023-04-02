@@ -29,7 +29,6 @@ export function renderCardMarkup(data) {
             }
           });
 
-
           if (!itemGenre.length) {
             finalCardGenre = 'Unknown genre';
           } else if (itemGenre.length > 2) {
@@ -37,7 +36,6 @@ export function renderCardMarkup(data) {
           } else {
             finalCardGenre = itemGenre.join(`, `);
           }
-
         });
 
         let cardTitle = ``;
