@@ -1,6 +1,7 @@
 import * as API from './api';
 import { Button } from './button';
 import * as StorageService from './storage-service';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import {
   createModalMarkup,
@@ -18,24 +19,30 @@ function onCardClick(e) {
   const targetCard = e.target;
   const card = targetCard.closest('.moviesgallery-item');
   const cardId = card.dataset.id;
-
   // console.log(cardId);
 
   try {
-    API.searchMovieId(cardId).then(res => {
-      modalBackdrop.classList.remove('is-hidden');
-      const markup = createModalMarkup(res);
-      modal.innerHTML = markup;
-      currentFilm = res;
-      // console.log(res);
+    API.searchMovieId(cardId).then(response => {
+      if (response.status === "Released") {
+        return response
+      }
+    })
+      .then(response => {
+        modalBackdrop.classList.remove('is-hidden');
+        const markup = createModalMarkup(response);
+        modal.innerHTML = markup;
+        currentFilm = response;
+        // console.log(res);
 
-      new Button('[data-list="watched"]', btnHandler);
-      new Button('[data-list="queue"]', btnHandler);
-    });
-  } catch (error) {
-    console.log(error);
-  }
-}
+        new Button('[data-list="watched"]', btnHandler);
+        new Button('[data-list="queue"]', btnHandler);
+      })
+      .catch(error => {
+        Notify.failure('Oooopsss, something went WRONG!!!');
+        console.log('error is', error);
+      });
+  };
+};
 
 function btnHandler(e) {
   const button = e.target;
