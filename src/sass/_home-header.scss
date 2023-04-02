@@ -63,7 +63,8 @@
     }
 
     &-svg {
-      /* fill: var(--primary-bg-color); */
+      fill: none;
+      stroke: var(--primary-bg-color);
     }
 
     &-name {
