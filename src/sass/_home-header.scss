@@ -1,6 +1,11 @@
 .header {
   opacity: 0.9;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-mob-1x-min.jpg');
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url('../images/header-fone-mob-1x-min.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 230px;
@@ -11,18 +16,33 @@
   margin: 0 auto;
 
   @include retina {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-mob-2x-min.jpg');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('../images/header-fone-mob-2x-min.jpg');
   }
 
   @include tablet {
     padding-top: 40px;
     padding-bottom: 45px;
     max-width: 768px;
-    background-image: llinear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-tab-1x-min.jpg');
-		opacity: 0.9;
+    background-image: llinear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('../images/header-fone-tab-1x-min.jpg');
+    opacity: 0.9;
 
     @include retina {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-tab-2x-min.jpg');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/header-fone-tab-2x-min.jpg');
     }
   }
 
@@ -30,10 +50,20 @@
     padding-bottom: 44px;
     max-width: 1280px;
     opacity: 0.9;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-1x-min.jpg');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('../images/header-fone-1x-min.jpg');
 
     @include retina {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-2x-min.jpg');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/header-fone-2x-min.jpg');
     }
   }
 
@@ -220,8 +250,12 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill {
-  -webkit-box-shadow: inset 0 0 0 50px #10151D;
+  -webkit-box-shadow: inset 0 0 0 50px #10151d;
   /* колір фону */
   -webkit-text-fill-color: var(--primary-bg-color);
   /* колір тексту */
+}
+
+#btnSignOut {
+  background-color: transparent;
 }
