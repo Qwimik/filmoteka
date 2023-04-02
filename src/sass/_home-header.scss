@@ -40,26 +40,27 @@
   }
 
   &__logo {
-    margin-right: 112px;
+    margin-right: 61px;
 
     @include tablet {
-      margin-right: 387px;
+      margin-right: 326px;
     }
 
     @include desktop {
-      margin-right: 898px;
+      margin-right: 837px;
     }
 
     &-wrap {
-      @include tablet {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
+      display: flex;
+      align-items: center;
 
-    &-link{
+			@include tablet{
+				column-gap: 10px;
+			}
 
-    }
+			@include desktop{
+				column-gap: 12x;
+			}
     }
 
     &-svg {
@@ -81,7 +82,7 @@
 
   &__list {
     display: flex;
-    gap: 40px;
+    gap: 20px;
     text-transform: uppercase;
 
     @include desktop {
