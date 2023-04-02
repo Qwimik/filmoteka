@@ -50,8 +50,12 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-.document__wrap main{
+.document__wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.document__wrap main {
   flex: 1 1 auto;
 }
 

@@ -68,17 +68,17 @@ if (btnSignOut) {
   });
 }
 
-if (refs.open) {
-  refs.open.addEventListener('click', () => {
-    if (auth.currentUser === null) {
-      refs.open.removeAttribute('href');
-      refs.backdrop.classList.remove('is-hidden');
-      Notiflix.Notify.warning('Oops, please Sign In first', {
-        position: 'center-top',
-      });
-    }
-  });
-}
+// if (refs.open) {
+//   refs.open.addEventListener('click', () => {
+//     if (auth.currentUser === null) {
+//       refs.open.removeAttribute('href');
+//       refs.backdrop.classList.remove('is-hidden');
+//       Notiflix.Notify.warning('Oops, please Sign In first', {
+//         position: 'center-top',
+//       });
+//     }
+//   });
+// }
 
 // registration
 if (formReg) {
