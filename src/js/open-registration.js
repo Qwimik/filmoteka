@@ -1,15 +1,15 @@
-const refs = {
+export const refs = {
   backdrop: document.querySelector('[data-set="personal-cabinet"]'),
-  open: document.querySelector('.header'),
+  open: document.querySelector('#btnLibrary'),
   close: document.querySelector('[data-set="close-cabinet"]'),
 };
-const refsRegistration = {
+export const refsRegistration = {
   backdrop: document.querySelector('[data-set="registration"]'),
   open: document.querySelector('[data-set="registration-open"]'),
   close: document.querySelector('[data-set="close-registration"]'),
 };
 const comeBack = document.querySelector('.come-back');
-class OpenCloseModal {
+export class OpenCloseModal {
   constructor({ backdrop, open, close }) {
     this.backdrop = backdrop;
     this.open = open;
@@ -38,16 +38,21 @@ class OpenCloseModal {
 }
 const closeRegistration = new OpenCloseModal(refsRegistration);
 const modal = new OpenCloseModal(refs);
-modal.openModal();
-modal.closeModal();
+// modal.openModal();
+if (refs.close) {
+  modal.closeModal();
+}
+if (refsRegistration.open) {
+  refsRegistration.open.addEventListener('click', e => {
+    refs.backdrop.classList.add('is-hidden');
+    refsRegistration.backdrop.classList.remove('is-hidden');
+    closeRegistration.closeModal();
+  });
+}
 
-refsRegistration.open.addEventListener('click', e => {
-  refs.backdrop.classList.add('is-hidden');
-  refsRegistration.backdrop.classList.remove('is-hidden');
-  closeRegistration.closeModal();
-});
-
-comeBack.addEventListener('click', () => {
-  refsRegistration.backdrop.classList.add('is-hidden');
-  refs.backdrop.classList.remove('is-hidden');
-});
+if (comeBack) {
+  comeBack.addEventListener('click', () => {
+    refsRegistration.backdrop.classList.add('is-hidden');
+    refs.backdrop.classList.remove('is-hidden');
+  });
+}

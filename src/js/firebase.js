@@ -1,134 +1,204 @@
-// import { initializeApp } from 'firebase/app';
-// import {
-//   getAuth,
-//   createUserWithEmailAndPassword,
-//   signInWithEmailAndPassword,
-//   signOut,
-// } from 'firebase/auth';
-// import { getDatabase, set, ref, onValue, update } from 'firebase/database';
+import { initializeApp } from 'firebase/app';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
+import { getDatabase, set, ref, onValue, update } from 'firebase/database';
+import Notiflix from 'notiflix';
+import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyDDNdha_Mwk9RTliXdwrHAWqx0yN9G0Yeo',
-//   authDomain: 'filmoteka-2bd7c.firebaseapp.com',
-//   projectId: 'filmoteka-2bd7c',
-//   storageBucket: 'filmoteka-2bd7c.appspot.com',
-//   messagingSenderId: '654768201498',
-//   appId: '1:654768201498:web:67ced8dc5c6682d69fd6a3',
-// };
+const firebaseConfig = {
+  apiKey: 'AIzaSyDDNdha_Mwk9RTliXdwrHAWqx0yN9G0Yeo',
+  authDomain: 'filmoteka-2bd7c.firebaseapp.com',
+  projectId: 'filmoteka-2bd7c',
+  storageBucket: 'filmoteka-2bd7c.appspot.com',
+  messagingSenderId: '654768201498',
+  appId: '1:654768201498:web:67ced8dc5c6682d69fd6a3',
+};
 
-// const app = initializeApp(firebaseConfig);
-// const auth = getAuth();
-// const database = getDatabase(app);
-// let user;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const database = getDatabase(app);
+export let user;
 
-// // форма реєстрації
-// const form = document.querySelector('#auth-form');
-// form.addEventListener('submit', e => {
-//   e.preventDefault();
+import { refs, refsRegistration } from './open-registration';
+import { KEYS, getFilms } from './storage-service';
 
-//   const email = form.authEmail.value;
-//   const password = form.authPassword.value;
+const formReg = document.querySelector('#formReg');
+const formSign = document.querySelector('#formSign');
+const btnSignOut = document.querySelector('#btnSignOut');
 
-//   createUserWithEmailAndPassword(auth, email, password)
-//     .then(userCredential => {
-//       // Signed in
-//       // isLogin = true;
-//       // тут ховаємо можливість логіну
-//       user = userCredential.user;
-//       set(ref(database, 'users/' + user.uid), {
-//         email: email,
-//       })
-//         .then(() => {
-//           // Data saved successfully!
-//           // notiflix - success
-//         })
-//         .catch(error => {
-//           // The write failed...
-//           // notiflix - error
-//           console.log(error);
-//         });
-//     })
-//     .catch(error => {
-//       // notiflix - error
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//     });
-// });
+if (btnSignOut) {
+  btnSignOut.addEventListener('click', () => {
+    Confirm.show(
+      'Filmoteka',
+      'Are you sure?',
+      'Yes',
+      'No',
+      () => {
+        signOut(auth)
+          .then(() => {
+            Notiflix.Notify.warning('See you soon!', {
+              position: 'center-top',
+            });
+            // notiflix - вихід з акаунту
+            localStorage.removeItem(KEYS.WATCHED);
+            localStorage.removeItem(KEYS.QUEUE);
+            localStorage.removeItem('user');
+            const elem = document.querySelector('.header__list-link');
+            setInterval(() => {
+              elem.click();
+            }, 1000);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      },
+      () => {
+        //  no
+      },
+      {
+        backgroundColor: '#eee',
+        titleColor: '#ff6b01',
+        okButtonBackground: '#ff6b01',
+      }
+    );
+  });
+}
 
-// // форма входу в аккаунт
-// const formLogin = document.querySelector('#auth-formLogin');
-// formLogin.addEventListener('submit', e => {
-//   e.preventDefault();
+if (refs.open) {
+  refs.open.addEventListener('click', () => {
+    if (auth.currentUser === null) {
+      refs.open.removeAttribute('href');
+      refs.backdrop.classList.remove('is-hidden');
+      Notiflix.Notify.warning('Oops, please Sign In first', {
+        position: 'center-top',
+      });
+    }
+  });
+}
 
-//   const email = formLogin.authEmail.value;
-//   const password = formLogin.authPassword.value;
+// registration
+if (formReg) {
+  formReg.addEventListener('submit', e => {
+    e.preventDefault();
 
-//   signInWithEmailAndPassword(auth, email, password)
-//     .then(userCredential => {
-//       // Signed in
-//       user = userCredential.user;
-//       // isLogin = true;
-//       // запит в бд за фільмами
-//       //   onUpdateAuthStorage(user);
+    const username = formReg.username.value;
+    const email = formReg.email.value;
+    const password = formReg.password.value;
 
-//       const starCountRef = ref(database, 'users/' + user.uid);
-//       onValue(starCountRef, snapshot => {
-//         const data = snapshot.val();
-//         console.log(data);
-//         // забираємо с бд фільми і додаєму в localstorage
-//       });
-//     })
-//     .catch(error => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       console.log(errorMessage);
-//     });
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        // Signed in
+        // тут ховаємо можливість логіну
+        user = userCredential.user;
+        refs.open.setAttribute('href', './library.html');
+        refsRegistration.backdrop.classList.add('is-hidden');
 
-//   // видаляємо можливість повторного логіну, та рисуємо кнопку виходу
-// });
+        setInterval(() => {
+          refs.open.click();
+        }, 1000);
 
-// // вийти з акаунту
-// const btnSignout = document.querySelector('#signout');
-// btnSignout.addEventListener('click', e => {
-//   signOut(auth)
-//     .then(() => {
-//       // notiflix - вихід з акаунту
-//       // isLogin = false;
-//       // чистимо localstorage
-//     })
-//     .catch(err => {
-//       // notiflix - помилка виходу з акаунту
-//       console.log(err);
-//     });
-// });
+        set(ref(database, 'users/' + user.uid), {
+          email: email,
+          username: username,
+        })
+          .then(() => {
+            // Data saved successfully!
+            Notiflix.Notify.success(`Hello ${username}. Glad to see you!`, {
+              position: 'center-top',
+            });
+          })
+          .catch(error => {
+            // The write failed...
+            console.log(error);
+          });
+      })
+      .catch(error => {
+        console.log(error);
+        Notiflix.Notify.failure('Incorrect data. Please, try again.', {
+          position: 'center-top',
+        });
+      });
+    formSign.username.value = '';
+    formSign.email.value = '';
+    formSign.password.value = '';
+  });
+}
 
-// // функція додавання-видалення в базу данних фільмів
-// export function onUpdateAuthStorage(user) {
-//   const last_date = new Date();
-//   // стягуємо з localstorage дані
-//   const data = {
-//     watched: ['watched', 'watched', 'watched'],
-//   };
+if (formSign) {
+  formSign.addEventListener('submit', e => {
+    e.preventDefault();
 
-//   update(ref(database, 'users/' + user.uid), {
-//     lastLogin: last_date,
-//     // записуємо в бд
-//     films: data,
-//   })
-//     .then(() => {
-//       // notiflix - success
-//     })
-//     .catch(err => {
-//       // notiflix - error
-//       console.log(err);
-//     });
-// }
+    const email = formSign.email.value;
+    const password = formSign.password.value;
 
-// // const updBtn = document.querySelector('#upd');
+    signInWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        // Signed in
+        user = userCredential.user;
+        localStorage.setItem('user', JSON.stringify(user));
+        refs.backdrop.classList.add('is-hidden');
+        refs.open.setAttribute('href', './library.html');
+        Notiflix.Notify.success('Welcome!', {
+          position: 'center-top',
+        });
+        setInterval(() => {
+          refs.open.click();
+        }, 1000);
+        getFilmsFromDB(user);
+      })
+      .catch(error => {
+        console.log(error);
+        Notiflix.Notify.failure('Incorrect data. Please, try again.', {
+          position: 'center-top',
+        });
+      });
+    formSign.email.value = '';
+    formSign.password.value = '';
+  });
+}
 
-// // updBtn.addEventListener('click', upd);
+// функція оновлення бази данних фільмів
+export function updateDB(uid) {
+  const last_date = new Date();
+  const userWatched = getFilms(KEYS.WATCHED);
+  const userQueue = getFilms(KEYS.QUEUE);
 
-// function upd() {
-//   console.log(user);
-//   onUpdateAuthStorage(user);
-// }
+  const data = {
+    watched: userWatched,
+    queue: userQueue,
+  };
+
+  update(ref(database, 'users/' + uid), {
+    lastLogin: last_date,
+    films: data,
+  })
+    .then(() => {
+      Notiflix.Notify.success('Update', {
+        position: 'center-top',
+      });
+    })
+    .catch(err => {
+      Notiflix.Notify.failure('Try again later...', {
+        position: 'center-top',
+      });
+      console.log(err);
+    });
+}
+
+function getFilmsFromDB(user) {
+  const starCountRef = ref(database, 'users/' + user.uid);
+  let dataFilms;
+  onValue(starCountRef, snapshot => {
+    const data = snapshot.val();
+    console.log(data.films);
+    if (data.films) {
+      localStorage.setItem(KEYS.WATCHED, JSON.stringify(data.films.watched));
+      localStorage.setItem(KEYS.QUEUE, JSON.stringify(data.films.queue));
+    }
+  });
+  return dataFilms;
+}
