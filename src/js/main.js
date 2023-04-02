@@ -12,6 +12,10 @@ window.addEventListener('load', event => {
       const totalItems = res.total_results;
       renderCardMarkup(res);
       renderStartPagination(totalItems);
+      if (res.results.length === 0) {
+        // Прибираємо пагінацію, якщо результати відсутні
+        pagination.destroy();
+      }
     });
   } catch (error) {
     console.log(error);

@@ -22,8 +22,6 @@
     "firebase": "^9.18.0",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.6",
-    "three": "^0.151.2",
-    "threejs-toys": "^0.0.8",
     "tui-pagination": "^3.4.1"
   },
   "devDependencies": {

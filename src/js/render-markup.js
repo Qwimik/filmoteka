@@ -4,6 +4,10 @@ import { genres } from '../data/genres.js';
 
 export function renderCardMarkup(data) {
   const resultArray = data.results;
+  if (data.results.length === 0) {
+    // Прибираємо пагінацію, якщо результати відсутні
+    pagination.destroy();
+  }
 
   const singleCard = resultArray
     .map(

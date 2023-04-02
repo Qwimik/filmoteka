@@ -47,3 +47,12 @@ export function renderStartPagination(totalItems) {
     renderCardMarkup(response);
   });
 }
+
+// const libraryOn = document.querySelector('.btnLibrary');
+// libraryOn.addEventListener('click', paginationOff);
+
+// const paginationOff = () => {
+//   pagination.destroy();
+// pagination.hide();
+// pagination.disable();
+// };
