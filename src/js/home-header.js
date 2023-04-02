@@ -37,7 +37,7 @@ async function onSubmitForm(e) {
   } catch (error) {
     console.log(error);
   }
-  inputForm.value = "";
+  inputForm.value = '';
 }
 
 // const fetchMovies = name => {
@@ -70,4 +70,3 @@ async function onSubmitForm(e) {
 //     });
 //   };
 // }))
-
