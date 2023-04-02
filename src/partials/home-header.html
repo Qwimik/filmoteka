@@ -3,8 +3,8 @@
     <div class="container__wrap">
     <nav class="header__menu">
       <div class="header__logo">
-        <a class="header__logo-link ink" href="./index.html">
-          <div class="header__logo-wrap">
+        <a class="header__logo-link link" href="./index.html">
+          <div class="header__menu-wrap">
             <svg class="header__logo-svg" width="24" height="24">
               <use href="/src/images/new-symbol-defs.svg#icon-film"></use>
             </svg>
@@ -20,8 +20,12 @@
           <a class="header__list-link" href="./library.html" id="btnLibrary">my library</a>
         </li>
         <li class="header__list-item">
-            <button type="button" id="btnSignOut">sign out</button>
-         </li>
+          <a class="header__list-link visually-hidden" href="./index.html" id="btnSignOut">
+              <svg class="header__logo-svg" width="18" height="18">
+                <use href="/src/images/new-symbol-defs.svg#icon-exit"></use>
+              </svg>
+          </a>
+        </li>
       </ul>
     </nav>
     <form class="header__form">
