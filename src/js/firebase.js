@@ -47,6 +47,7 @@ if (btnSignOut) {
             localStorage.removeItem(KEYS.WATCHED);
             localStorage.removeItem(KEYS.QUEUE);
             localStorage.removeItem('user');
+            btnSignOut.classList.add('visually-hidden');
             const elem = document.querySelector('.header__list-link');
             setInterval(() => {
               elem.click();
@@ -95,6 +96,7 @@ if (formReg) {
         // тут ховаємо можливість логіну
         user = userCredential.user;
         refs.open.setAttribute('href', './library.html');
+        btnSignOut.classList.remove('visually-hidden');
         refsRegistration.backdrop.classList.add('is-hidden');
 
         setInterval(() => {
@@ -128,6 +130,7 @@ if (formReg) {
   });
 }
 
+// singIn
 if (formSign) {
   formSign.addEventListener('submit', e => {
     e.preventDefault();
@@ -141,6 +144,7 @@ if (formSign) {
         user = userCredential.user;
         localStorage.setItem('user', JSON.stringify(user));
         refs.backdrop.classList.add('is-hidden');
+        btnSignOut.classList.remove('visually-hidden');
         refs.open.setAttribute('href', './library.html');
         Notiflix.Notify.success('Welcome!', {
           position: 'center-top',
