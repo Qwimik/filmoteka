@@ -8,6 +8,7 @@
   padding-bottom: 44px;
   min-width: 320px;
   max-width: 767px;
+  margin: 0 auto;
 
   @include retina {
     background-image: url('../images/header-fone-mob-2x-min.jpg');
