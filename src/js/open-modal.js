@@ -3,6 +3,7 @@ import { Button } from './button';
 import * as StorageService from './storage-service';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { updateDB } from './firebase';
+import { refs } from './open-registration';
 
 import {
   createModalMarkup,
@@ -15,6 +16,9 @@ const field = document.querySelector('.moviesgallery');
 field.addEventListener('click', onCardClick);
 let markup = ``;
 let currentFilm = null;
+export const isModalOpen = {
+  isOpen: false,
+};
 
 function onCardClick(e) {
   const targetCard = e.target;
@@ -60,7 +64,12 @@ function btnHandler(e) {
       button.dataset.action = 'add';
       button.textContent = 'Add to watched';
       button.blur();
-      updateDB(userUid.uid);
+      if (userUid) {
+        updateDB(userUid.uid);
+      } else {
+        isModalOpen.isOpen = true;
+        refs.backdrop.classList.remove('is-hidden');
+      }
       break;
     }
     case 'add': {
@@ -68,7 +77,12 @@ function btnHandler(e) {
       button.dataset.action = 'remove';
       button.textContent = 'Remove from watched';
       button.blur();
-      updateDB(userUid.uid);
+      if (userUid) {
+        updateDB(userUid.uid);
+      } else {
+        isModalOpen.isOpen = true;
+        refs.backdrop.classList.remove('is-hidden');
+      }
       break;
     }
 

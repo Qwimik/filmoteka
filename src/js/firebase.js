@@ -8,6 +8,9 @@ import {
 import { getDatabase, set, ref, onValue, update } from 'firebase/database';
 import Notiflix from 'notiflix';
 import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
+import { refs, refsRegistration } from './open-registration';
+import { KEYS, getFilms } from './storage-service';
+import { isModalOpen } from './open-modal';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDNdha_Mwk9RTliXdwrHAWqx0yN9G0Yeo',
@@ -22,9 +25,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const database = getDatabase(app);
 export let user;
-
-import { refs, refsRegistration } from './open-registration';
-import { KEYS, getFilms } from './storage-service';
 
 const formReg = document.querySelector('#formReg');
 const formSign = document.querySelector('#formSign');
@@ -96,13 +96,7 @@ if (formReg) {
         // тут ховаємо можливість логіну
         user = userCredential.user;
         refs.open.setAttribute('href', './library.html');
-        btnSignOut.classList.remove('visually-hidden');
         refsRegistration.backdrop.classList.add('is-hidden');
-
-        setInterval(() => {
-          refs.open.click();
-        }, 1000);
-
         set(ref(database, 'users/' + user.uid), {
           email: email,
           username: username,
@@ -117,6 +111,11 @@ if (formReg) {
             // The write failed...
             console.log(error);
           });
+        if (!isModalOpen.isOpen) {
+          setInterval(() => {
+            refs.open.click();
+          }, 1000);
+        }
       })
       .catch(error => {
         console.log(error);
@@ -144,15 +143,16 @@ if (formSign) {
         user = userCredential.user;
         localStorage.setItem('user', JSON.stringify(user));
         refs.backdrop.classList.add('is-hidden');
-        btnSignOut.classList.remove('visually-hidden');
         refs.open.setAttribute('href', './library.html');
         Notiflix.Notify.success('Welcome!', {
           position: 'center-top',
         });
-        setInterval(() => {
-          refs.open.click();
-        }, 1000);
         getFilmsFromDB(user);
+        if (!isModalOpen.isOpen) {
+          setInterval(() => {
+            refs.open.click();
+          }, 1000);
+        }
       })
       .catch(error => {
         console.log(error);
@@ -198,7 +198,6 @@ function getFilmsFromDB(user) {
   let dataFilms;
   onValue(starCountRef, snapshot => {
     const data = snapshot.val();
-    console.log(data.films);
     if (data.films) {
       localStorage.setItem(KEYS.WATCHED, JSON.stringify(data.films.watched));
       localStorage.setItem(KEYS.QUEUE, JSON.stringify(data.films.queue));
