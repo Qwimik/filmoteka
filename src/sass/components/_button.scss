@@ -66,8 +66,8 @@
   background-image: linear-gradient(45deg, $accent-color 50%, transparent 50%);
   background-position: 100%;
   background-size: 400%;
-  -webkit-transition: background $animationTransition ease-in-out, color $animationTransition;
-  transition: background $animationTransition ease-in-out, color $animationTransition;
+  -webkit-transition: background 300ms ease-in-out, color 300ms;
+  transition: background 300ms ease-in-out, color 300ms;
 
 
   &:focus {
@@ -105,7 +105,7 @@
   background-size: 500px;
   background-repeat: no-repeat;
   background-position: 0%;
-  transition: background $animationTransition ease-in-out, color $animationTransition;
+  transition: background 300ms ease-in-out, color 300ms;
 
 
   &:focus {
