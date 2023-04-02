@@ -46,6 +46,13 @@ input {
 body {
   font-family: Roboto, sans-serif;
   background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.document__wrap{
+  flex: 1 1 auto;
 }
 
 /*Контейнер*/
