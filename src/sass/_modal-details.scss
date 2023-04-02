@@ -69,8 +69,9 @@ h3 {
     padding: 48px 20px;
   }
   .film__image {
-    max-width: 240px;
-    max-height: 357px;
+    // мне кажется для моб - лишнее. Плиз
+    // max-width: 240px;
+    // max-height: 357px;
   }
 }
 
@@ -95,7 +96,6 @@ h3 {
     max-height: 478px;
   }
 }
-
 
 .button__close {
   position: absolute;
@@ -143,23 +143,28 @@ h3 {
 
 .film__image {
   display: block;
-  // width: 100%;
-  border-radius: 5px;
+  width: 100%;
+  // Для скруглювання кутків картинки треба не на обгортку а на саму картинку давати
+  // border-radius: 5px;
   object-fit: cover;
+  & img {
+    border-radius: 5px;
+    width: 100%;
+  }
 
   @media screen and (min-width: $tablet) {
     min-width: 264px;
   }
 }
 .film__image {
-    @media screen and (max-width: $min-tablet) {
-            width: 240px;
-        }
+  @media screen and (max-width: $min-tablet) {
+    // width: 240px;
+    width: 100%;
+  }
 }
 
 .film__image img {
-    // width: 100%;
-   
+  // width: 100%;
 }
 .film__info {
   display: flex;
