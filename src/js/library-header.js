@@ -20,14 +20,17 @@ async function handleClick(event) {
 
 // Знаходимо кнопки за атрибутами
 const filter = document.querySelector('.filter__wrap');
-const refs = {
-  btnWatched: filter.querySelector('button[data-action="watchedFilms"]'),
-  btnQueue: filter.querySelector('button[data-action="queueFilms"]'),
-};
 
-// console.log(refs.btnWatched.dataset.action);
-// console.log(refs.btnQueue.dataset.action);
+if (filter) {
+  const refs = {
+    btnWatched: filter.querySelector('button[data-action="watchedFilms"]'),
+    btnQueue: filter.querySelector('button[data-action="queueFilms"]'),
+  };
 
-// додаємо обробники кліка на кнопки, щоб викликати функцію
-refs.btnWatched.addEventListener('click', handleClick);
-refs.btnQueue.addEventListener('click', handleClick);
+  // console.log(refs.btnWatched.dataset.action);
+  // console.log(refs.btnQueue.dataset.action);
+
+  // додаємо обробники кліка на кнопки, щоб викликати функцію
+  refs.btnWatched.addEventListener('click', handleClick);
+  refs.btnQueue.addEventListener('click', handleClick);
+}
