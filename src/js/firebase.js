@@ -30,6 +30,22 @@ const formReg = document.querySelector('#formReg');
 const formSign = document.querySelector('#formSign');
 const btnSignOut = document.querySelector('#btnSignOut');
 
+let isUserLogin = getFilms('user');
+
+if (!isUserLogin) {
+  refs.open.addEventListener('click', onLibraryClick);
+}
+
+function onLibraryClick() {
+  if (!isUserLogin) {
+    refs.open.removeAttribute('href');
+    refs.backdrop.classList.remove('is-hidden');
+    Notiflix.Notify.warning('Oops, please Sign In first', {
+      position: 'center-top',
+    });
+  }
+}
+
 if (btnSignOut) {
   btnSignOut.addEventListener('click', onBtnSignOutClick);
 }
@@ -50,6 +66,7 @@ function onBtnSignOutClick() {
           localStorage.removeItem(KEYS.WATCHED);
           localStorage.removeItem(KEYS.QUEUE);
           localStorage.removeItem('user');
+          isUserLogin = null;
           const elem = document.querySelector('.header__list-link');
           if (window.location.pathname === '/library.html') {
             setInterval(() => {
@@ -70,22 +87,6 @@ function onBtnSignOutClick() {
       okButtonBackground: '#ff6b01',
     }
   );
-}
-
-const isUserLogin = getFilms('user');
-
-if (!isUserLogin) {
-  refs.open.addEventListener('click', onLibraryClick);
-}
-
-function onLibraryClick() {
-  if (!isUserLogin) {
-    refs.open.removeAttribute('href');
-    refs.backdrop.classList.remove('is-hidden');
-    Notiflix.Notify.warning('Oops, please Sign In first', {
-      position: 'center-top',
-    });
-  }
 }
 
 // registration
