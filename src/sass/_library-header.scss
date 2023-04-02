@@ -19,28 +19,28 @@
 		opacity: 0.9;
 		min-width: 320px;
 		max-width: 767px;
-		background-image: url('../images/header-fone-library-mob-1x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-mob-1x-min.jpg');
 
 	@include retina {
-		background-image: url('../images/header-fone-library-mob-2x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-mob-2x-min.jpg');
 	}
 
 	@include tablet {
-		background-image: url('../images/header-fone-library-tab-1x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-tab-1x-min.jpg');
 		min-width: 768px;
 		max-width: 1279px;
 
 	@include retina {
-		background-image: url('../images/header-fone-library-tab-2x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-tab-2x-min.jpg');
 	}
 	}
 
 	@include desktop {
-		background-image: url('../images/header-fone-library-1x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-1x-min.jpg');
 		max-width: 1280px;
 
 	@include retina {
-		background-image: url('../images/header-fone-library-2x-min.jpg');
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/header-fone-library-2x-min.jpg');
 	}}
 }
 
