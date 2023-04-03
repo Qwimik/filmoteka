@@ -702,7 +702,7 @@ input:-webkit-autofill {
   transition: box-shadow 0.3s;
 }
 .moviesgallery-wrap .thumb:hover {
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.342);
+  box-shadow: 0 0 11px rgb(117, 117, 117);
 }
 
 .moviesgallery-img {
