@@ -1,29 +1,33 @@
 .navigation__genre {
   display: flex;
   gap: 10px;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; 
   flex-wrap: wrap;
-  // color: white;
   text-decoration: none;
-
-  font-family: Roboto;
+  
   font-size: 12px;
-  font-weight: 500;
-  line-height: 14px;
-  color: #FFFFFF;
+  font-weight: 500; 
+  line-height: calc(14 / 12);
 }
 .navigation__item {
+  color: #FFFFFF;
   background-color: #ff6b08;
   border-radius: 15px;
   padding: 8px 16px;
-  cursor: pointer;
+  cursor: pointer;  
 
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
-      0px 1px 1px rgba(0, 0, 0, 0.14),
-      0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: background 300ms ease-in-out, color 300ms,
+    transform 300ms ease-in-out;
 
-  
-  
-  
+  &:hover,
+    &:focus {
+      transform: scale(1.1);
+      transition: box-shadow 0.3s;
+      box-shadow: 0 0 9px rgb(117, 117, 117);    
+    } 
+
+  @media screen and (min-width: $desktop) {
+    font-size: 14px;
+    padding: 12px 25px;
+  }
 }
