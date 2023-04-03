@@ -1,13 +1,17 @@
+import * as allGenres from '../data/genres.js';
+import { pagination } from './pagination';
+
 const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
 const cardList = document.querySelector(`.moviesgallery-box`);
-import * as allGenres from '../data/genres.js';
 const plugPoster = 'placeholder.237126ea.webp';
 
 export function renderCardMarkup(data) {
   const resultArray = data.results;
-  if (data.results.length === 0) {
+  if (resultArray.length === 0) {
     // Прибираємо пагінацію, якщо результати відсутні
-    pagination.destroy();
+    document.querySelector('#paginationWrapper').style.display = 'none';
+  } else {
+    document.querySelector('#paginationWrapper').style.display = 'block';
   }
 
   const singleCard = resultArray

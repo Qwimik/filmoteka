@@ -4,7 +4,10 @@ import { genres } from '/src/data/genres';
 import { renderCardMarkup } from './render-markup';
 const navigation = document.querySelector('.navigation__genre');
 let idGenre = 0;
-navigation.addEventListener('click', onClickFilterByGenre);
+
+if (navigation) {
+  navigation.addEventListener('click', onClickFilterByGenre);
+}
 
 async function onClickFilterByGenre(e) {
   const textContent = e.target.textContent;
