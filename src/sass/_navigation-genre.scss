@@ -1,11 +1,33 @@
 .navigation__genre {
   display: flex;
-  gap: 5px;
-  justify-content: center;
+  gap: 10px;
+  justify-content: center; 
   flex-wrap: wrap;
+  text-decoration: none;
+  
+  font-size: 12px;
+  font-weight: 500; 
+  line-height: calc(14 / 12);
 }
 .navigation__item {
-  background-color: burlywood;
-  border-radius: 5px;
-  padding: 5px 5px;
+  color: #FFFFFF;
+  background-color: #ff6b08;
+  border-radius: 15px;
+  padding: 8px 16px;
+  cursor: pointer;  
+
+  transition: background 300ms ease-in-out, color 300ms,
+    transform 300ms ease-in-out;
+
+  &:hover,
+    &:focus {
+      transform: scale(1.1);
+      transition: box-shadow 0.3s;
+      box-shadow: 0 0 9px rgb(117, 117, 117);    
+    } 
+
+  @media screen and (min-width: $desktop) {
+    font-size: 14px;
+    padding: 12px 25px;
+  }
 }
