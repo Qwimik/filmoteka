@@ -24,7 +24,6 @@ function onCardClick(e) {
   const targetCard = e.target;
   const card = targetCard.closest('.moviesgallery-item');
   const cardId = card.dataset.id;
-  // console.log(cardId);
 
   API.searchMovieId(cardId)
     .then(response => {
@@ -37,7 +36,6 @@ function onCardClick(e) {
       const markup = createModalMarkup(response);
       modal.innerHTML = markup;
       currentFilm = response;
-      // console.log(res);
 
       new Button('[data-list="watched"]', btnHandler);
       new Button('[data-list="queue"]', btnHandler);

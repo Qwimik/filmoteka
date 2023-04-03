@@ -1,8 +1,7 @@
 const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
 const cardList = document.querySelector(`.moviesgallery-box`);
-import { genres } from '../data/genres.js';
+import * as allGenres from '../data/genres.js';
 const plugPoster = 'placeholder.237126ea.webp';
-// const plugPoster = '/src/images/zhdun-img.png';
 
 export function renderCardMarkup(data) {
   const resultArray = data.results;
@@ -17,6 +16,7 @@ export function renderCardMarkup(data) {
         poster_path,
         title,
         genre_ids,
+        genres,
         release_date,
         vote_average,
         original_name,
@@ -27,8 +27,11 @@ export function renderCardMarkup(data) {
 
         let itemGenre = [];
         let finalCardGenre = [];
-        genre_ids.forEach(function (item) {
-          let genre = genres.map(genre => {
+
+        const genresList = genre_ids ? genre_ids : genres;
+
+        genresList.forEach(function (item) {
+          let genre = allGenres.genres.map(genre => {
             if (item === genre.id) {
               itemGenre.push(genre.name);
             }
@@ -61,8 +64,10 @@ export function renderCardMarkup(data) {
           cardDate = first_air_date;
         }
         let cardYear = cardDate.substring(0, 4);
-     
-        let poster = poster_path ? `${POSTER_BASE_URL}${poster_path}` : plugPoster;
+
+        let poster = poster_path
+          ? `${POSTER_BASE_URL}${poster_path}`
+          : plugPoster;
 
         return `<li class="moviesgallery-item" data-id="${id}">
             <div class="moviesgallery-wrap">
