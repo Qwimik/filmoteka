@@ -120,11 +120,11 @@ if (formReg) {
             // The write failed...
             console.log(error);
           });
-        if (window.location.pathname === '/index.html' && !isModalOpen.isOpen) {
-          setInterval(() => {
-            refs.open.click();
-          }, 1000);
-        }
+        // if (window.location.pathname === '/index.html' && !isModalOpen.isOpen) {
+        //   setInterval(() => {
+        //     refs.open.click();
+        //   }, 1000);
+        // }
       })
       .catch(error => {
         console.log(error);
@@ -158,11 +158,11 @@ if (formSign) {
           position: 'center-top',
         });
         getFilmsFromDB(user);
-        if (window.location.pathname === '/index.html' && !isModalOpen.isOpen) {
-          setInterval(() => {
-            refs.open.click();
-          }, 1000);
-        }
+        // if (window.location.pathname === '/index.html' && !isModalOpen.isOpen) {
+        //   setInterval(() => {
+        //     refs.open.click();
+        //   }, 1000);
+        // }
       })
       .catch(error => {
         console.log(error);
@@ -208,11 +208,18 @@ function getFilmsFromDB(user) {
   let dataFilms;
   onValue(starCountRef, snapshot => {
     const data = snapshot.val();
-    if (data.films.watched) {
-      localStorage.setItem(KEYS.WATCHED, JSON.stringify(data.films.watched));
-    }
-    if (data.films.queue) {
-      localStorage.setItem(KEYS.QUEUE, JSON.stringify(data.films.queue));
+    if (data) {
+      if (data.films) {
+        if (data.films.watched) {
+          localStorage.setItem(
+            KEYS.WATCHED,
+            JSON.stringify(data.films.watched)
+          );
+        }
+        if (data.films.queue) {
+          localStorage.setItem(KEYS.QUEUE, JSON.stringify(data.films.queue));
+        }
+      }
     }
   });
   return dataFilms;

@@ -9,11 +9,12 @@ export function renderCardMarkup(data) {
   const resultArray = data.results;
 
   if (resultArray) {
-    // if (resultArray.length === 0) {
-    //   // Прибираємо пагінацію, якщо результати відсутні
-    // } else {
-    //   document.querySelector('#paginationWrapper').style.display = 'block';
-    // }
+    if (resultArray.length === 0) {
+      // Прибираємо пагінацію, якщо результати відсутні
+      document.querySelector('#paginationWrapper').style.display = 'none';
+    } else {
+      document.querySelector('#paginationWrapper').style.display = 'block';
+    }
 
     const singleCard = resultArray
       .map(

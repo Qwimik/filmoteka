@@ -15,7 +15,7 @@ export function renderCardMarkup(data) {
 
   if (data) {
     document.querySelector('#paginationWrapper').style.display = 'block';
-    console.log(data);
+
     const singleCard = data
       .map(
         ({
