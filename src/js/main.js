@@ -5,22 +5,32 @@ import { scrollToTop } from './scrollToTop';
 import { renderStartPagination } from './pagination';
 
 const cardList = document.querySelector(`.moviesgallery-box`);
+
+// Перевірка чи знаходимось ми на сторінці Home
+const isHome = document.querySelector('#home');
+const isLibrary = document.querySelector('#library');
+
 // пошук та рендер за замовчуванням головної сторінки при загрузці
-window.addEventListener('load', event => {
-  try {
-    API.searchTrending(1).then(res => {
-      const totalItems = res.total_results;
-      renderCardMarkup(res);
-      renderStartPagination(totalItems);
-      if (res.results.length === 0) {
-        // Прибираємо пагінацію, якщо результати відсутні
-        pagination.destroy();
-      }
-    });
-  } catch (error) {
-    console.log(error);
-  }
-});
+if (isHome) {
+  window.addEventListener('load', event => {
+    try {
+      API.searchTrending(1).then(res => {
+        const totalItems = res.total_results;
+        renderCardMarkup(res);
+        renderStartPagination(totalItems);
+        if (res.results.length === 0) {
+          // Прибираємо пагінацію, якщо результати відсутні
+          pagination.destroy();
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
+}
+
+if (isLibrary) {
+}
 
 // // приклад запросу через api
 // import * as API from './api';

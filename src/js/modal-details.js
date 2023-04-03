@@ -1,3 +1,5 @@
+import { renderActiveListFilms } from './library-header';
+
 // modal-details.js
 
 const modalBackdrop = document.querySelector('.modal__backdrop');
@@ -8,7 +10,7 @@ const closeButton = document.querySelector('.button__close');
 const closeModal = () => {
   modalBackdrop.classList.add('is-hidden');
   if (window.location.pathname === '/library.html') {
-    location.reload();
+    renderActiveListFilms();
   }
 };
 
