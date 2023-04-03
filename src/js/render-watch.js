@@ -3,7 +3,7 @@ import { KEYS, getFilms } from './storage-service';
 import { genres } from '../data/genres.js';
 const queue = document.querySelector('[data-active="queue"]');
 const cardList = document.querySelector('[data-set="library-films"]');
-const plugPoster = '/src/images/zhdun-img.png';
+const plugPoster = 'placeholder.237126ea.webp';
 const changedKey = genres;
 const watchArray = getFilms(KEYS.WATCHED);
 const queueArray = getFilms(KEYS.QUEUE);

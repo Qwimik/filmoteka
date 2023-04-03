@@ -1,7 +1,8 @@
 const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
 const cardList = document.querySelector(`.moviesgallery-box`);
 import { genres } from '../data/genres.js';
-const plugPoster = '/src/images/zhdun-img.png';
+const plugPoster = 'placeholder.237126ea.webp';
+// const plugPoster = '/src/images/zhdun-img.png';
 
 export function renderCardMarkup(data) {
   const resultArray = data.results;
