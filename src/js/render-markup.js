@@ -1,6 +1,7 @@
 const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
 const cardList = document.querySelector(`.moviesgallery-box`);
 import { genres } from '../data/genres.js';
+const plugPoster = '/src/images/zhdun-img.png';
 
 export function renderCardMarkup(data) {
   const resultArray = data.results;
@@ -59,10 +60,13 @@ export function renderCardMarkup(data) {
           cardDate = first_air_date;
         }
         let cardYear = cardDate.substring(0, 4);
+     
+        let poster = poster_path ? `${POSTER_BASE_URL}${poster_path}` : plugPoster;
+
         return `<li class="moviesgallery-item" data-id="${id}">
             <div class="moviesgallery-wrap">
             <div class="thumb">
-              <img class="moviesgallery-img" src="${POSTER_BASE_URL}${poster_path}" alt="${title}" width="440" />
+              <img class="moviesgallery-img" src="${poster}" alt="${title}" width="440" />
             </div>
               <div class="moviesgallery-text">
                 <p class="moviesgallery-text-title">${cardTitle}</p>
