@@ -9,7 +9,10 @@ const closeButton = document.querySelector('.button__close');
 
 const closeModal = () => {
   modalBackdrop.classList.add('is-hidden');
-  if (window.location.pathname === '/library.html') {
+  if (
+    window.location.pathname === '/library.html' ||
+    window.location.pathname === '/filmoteka/library.html'
+  ) {
     renderActiveListFilms();
   }
 };

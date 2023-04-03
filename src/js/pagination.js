@@ -77,23 +77,23 @@ export function renderStartPagination(totalItems) {
 //   pagination.hide();
 //   pagination.disable();
 // };
-const paginationOff = () => {
-  pagination.destroy();
-  // delete document.querySelector('#pagination');
-  // if (container) {
-  //   alert('please work');
-  //   container.remove();
-  //   console.log(container);
-  //   container.innerHTML = '';
-  //   console.log(pagination);
-  //   pagination.destroy();
-  //   console.log(pagination);
-  // }
-};
+// const paginationOff = () => {
+// pagination.destroy();
+// delete document.querySelector('#pagination');
+// if (container) {
+//   alert('please work');
+//   container.remove();
+//   console.log(container);
+//   container.innerHTML = '';
+//   console.log(pagination);
+//   pagination.destroy();
+//   console.log(pagination);
+// }
+// };
 
-const libraryOn = document.querySelector('#btnLibrary');
+// const libraryOn = document.querySelector('#btnLibrary');
 
-libraryOn.addEventListener('click', paginationOff);
+// libraryOn.addEventListener('click', paginationOff);
 
 // libraryOn.addEventListener('click', () => {
 //   alert('please work');
