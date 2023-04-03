@@ -44,7 +44,7 @@ function onCardClick(e) {
 
       new Button('[data-list="watched"]', btnHandler);
       new Button('[data-list="queue"]', btnHandler);
-      trailerBtn = new Button('.film__button-trailer', watchTrailer);
+      new Button('.film__button-trailer', watchTrailer);
     })
     .catch(error => {
       Notify.failure('Oooopsss, something went WRONG!!!');
