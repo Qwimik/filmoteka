@@ -21,7 +21,10 @@ export const isModalOpen = {
 };
 
 function onCardClick(e) {
-  const targetCard = e.target;
+  const targetCard = e.target.closest('li');
+
+  if (!targetCard) return;
+
   const card = targetCard.closest('.moviesgallery-item');
   const cardId = card.dataset.id;
 
