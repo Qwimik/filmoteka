@@ -21,3 +21,9 @@ export const searchMovieTitle = async (title, page) => {
   );
   return res.data;
 };
+export const searchMovieGenre = async (genre) => {
+  const res = await axios.get(
+    `discover/movie?api_key=${API_KEY}&with_genres=${genre}&language=en-US&include_adult=false&sort_by=revenue.desc`
+  );
+  return res.data;
+};
