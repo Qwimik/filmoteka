@@ -3,7 +3,9 @@ import { pagination } from './pagination';
 
 const POSTER_BASE_URL = `https://image.tmdb.org/t/p/w500`;
 const cardList = document.querySelector(`.moviesgallery-box`);
-const plugPoster = 'placeholder.237126ea.webp';
+import * as plugPoster from '../images/placeholder.webp';
+// console.log(plugPoster);
+// const plugPoster = `./../images/placeholder.webp`;
 
 export function renderCardMarkup(data) {
   const resultArray = data.results;
