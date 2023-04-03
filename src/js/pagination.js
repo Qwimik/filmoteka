@@ -5,10 +5,11 @@ import 'tui-pagination/dist/tui-pagination.css';
 // Імпортуєм запити:
 import * as API from './api';
 import { renderCardMarkup } from './render-markup';
-import { searchTrending, searchMovieId, searchMovieTitle } from './api';
+// import { searchTrending, searchMovieId, searchMovieTitle } from './api';
 import { scrollToTop } from './scrollToTop';
 // Робимо екземпляр пагінації, вказавши контейнер та параметри:
 const container = document.querySelector('#pagination');
+const originalContainer = container;
 // totalItems: загальна кількість елементів, які будуть розділені на сторінки.
 // itemsPerPage: кількість елементів, які відображаються на одній сторінці.
 // visiblePages: кількість сторінок, які відображаються одночасно в пагінації.
@@ -48,11 +49,54 @@ export function renderStartPagination(totalItems) {
   });
 }
 
-// const libraryOn = document.querySelector('.btnLibrary');
-// libraryOn.addEventListener('click', paginationOff);
+// const paginationOff = () => {
+//   alert('please work');
+//   const newContainer = container.cloneNode(false);
+//   container.parentNode.replaceChild(newContainer, container);
+//   originalContainer = container;
+//   container = newContainer;
+// };
 
 // const paginationOff = () => {
-//   pagination.destroy();
-// pagination.hide();
-// pagination.disable();
+//   alert('please work');
+//   // container.innerHTML = '';
+//   document.querySelector('#paginationWrapper').style.display = 'none';
 // };
+
+// const paginationOff = () => {
+//   document.getElementById('pagination').classList.add('visually-hidden');
+
+//   document.querySelector('#pagination').style.display = 'none';
+//   // libraryOn.removeEventListener('click', paginationOff);
+// };
+
+// libraryOn.addEventListener('click', paginationOff);
+// const paginationOff = () => {
+//   pagination.off();
+//   pagination.destroy();
+//   pagination.hide();
+//   pagination.disable();
+// };
+const paginationOff = () => {
+  pagination.destroy();
+  // delete document.querySelector('#pagination');
+  // if (container) {
+  //   alert('please work');
+  //   container.remove();
+  //   console.log(container);
+  //   container.innerHTML = '';
+  //   console.log(pagination);
+  //   pagination.destroy();
+  //   console.log(pagination);
+  // }
+};
+
+const libraryOn = document.querySelector('#btnLibrary');
+
+libraryOn.addEventListener('click', paginationOff);
+
+// libraryOn.addEventListener('click', () => {
+//   alert('please work');
+//   document.querySelector('#paginationWrapper').style.display = 'none';
+//   pagination.hide();
+// });
