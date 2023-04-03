@@ -223,3 +223,16 @@
     opacity: 0;
   }
 }
+
+.button-trailer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px;
+  margin-bottom: 5px;
+  background-color: transparent;
+  transition: transform 250ms ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
