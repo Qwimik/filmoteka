@@ -5,40 +5,40 @@
 //   align-items: center;
 //   justify-content: center;
 //   padding: 0;
-// 
+//
 //   color: $dark-color;
 //   background-color: transparent;
 //   border-color: $dark-color;
 //   border: 1px solid $dark-color;
 //   border-radius: 5px;
-// 
+//
 //   font-weight: 500;
 //   font-size: 10px;
 //   line-height: calc(16 / 12);
-// 
+//
 //   transition: transform 300ms ease-in-out;
-// 
+//
 //   &.light {
 //     color: $light-color;
 //     border-color: $light-color;
 //   }
-// 
+//
 //   &.active {
 //     border-color: $accent-color;
 //     background-color: $accent-color;
 //     color: $light-color;
 //   }
-// 
+//
 //   &:hover,
 //   &:focus {
 //     transform: scale(1.05);
 //   }
-// 
+//
 //   @media screen and (min-width: $tablet) {
 //     width: 125px;
 //     font-size: 12px;
 //   }
-// 
+//
 //   @media screen and (min-width: $desktop) {
 //     width: 136px;
 //   }
@@ -62,13 +62,17 @@
   font-size: 10px;
   line-height: calc(16 / 12);
 
-  background-image: -webkit-linear-gradient(45deg, $accent-color 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(
+    45deg,
+    $accent-color 50%,
+    transparent 50%
+  );
   background-image: linear-gradient(45deg, $accent-color 50%, transparent 50%);
   background-position: 100%;
   background-size: 400%;
   -webkit-transition: background 300ms ease-in-out, color 300ms;
-  transition: background 300ms ease-in-out, color 300ms;
-
+  transition: background 300ms ease-in-out, color 300ms,
+    transform 300ms ease-in-out;
 
   &:focus {
     color: $light-color;
@@ -100,13 +104,17 @@
   color: $light-color;
   border: 1px solid $accent-color;
 
-  background-image: -webkit-linear-gradient(45deg, $accent-color 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(
+    45deg,
+    $accent-color 50%,
+    transparent 50%
+  );
   background-image: linear-gradient(45deg, $accent-color 50%, transparent 50%);
   background-size: 500px;
   background-repeat: no-repeat;
   background-position: 0%;
-  transition: background 300ms ease-in-out, color 300ms;
-
+  transition: background 300ms ease-in-out, color 300ms,
+    transform 300ms ease-in-out;
 
   &:focus {
     background-position: 100%;

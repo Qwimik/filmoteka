@@ -3,6 +3,7 @@ import { renderCardMarkup } from './render-markup';
 import { pagination } from './pagination';
 import { scrollToTop } from './scrollToTop';
 import { renderStartPagination } from './pagination';
+import { renderActiveListFilms } from './library-header';
 
 const cardList = document.querySelector(`.moviesgallery-box`);
 
@@ -30,6 +31,7 @@ if (isHome) {
 }
 
 if (isLibrary) {
+  renderActiveListFilms();
 }
 
 // // приклад запросу через api
