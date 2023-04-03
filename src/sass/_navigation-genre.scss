@@ -1,11 +1,29 @@
 .navigation__genre {
   display: flex;
-  gap: 5px;
+  gap: 10px;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  // color: white;
+  text-decoration: none;
+
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  color: #FFFFFF;
 }
 .navigation__item {
-  background-color: burlywood;
-  border-radius: 5px;
-  padding: 5px 5px;
+  background-color: #ff6b08;
+  border-radius: 15px;
+  padding: 8px 16px;
+  cursor: pointer;
+
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+      0px 1px 1px rgba(0, 0, 0, 0.14),
+      0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  
+  
+  
 }
