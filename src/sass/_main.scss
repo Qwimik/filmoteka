@@ -27,6 +27,12 @@
     width: calc((1280px - 96px) / 3);
   }
   cursor: pointer;
+  & .thumb {
+    transition: box-shadow 0.3s;
+    &:hover {
+      box-shadow: 0 0 11px rgb(117, 117, 117);
+    }
+  }
 }
 
 .moviesgallery-img {
@@ -80,7 +86,7 @@
 }
 .moviesgallery-item {
   @media screen and (min-width: 1280px) {
-  //  
+    //
   }
 }
 .ganres-wrap {
