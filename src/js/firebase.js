@@ -68,7 +68,10 @@ function onBtnSignOutClick() {
           localStorage.removeItem('user');
           isUserLogin = null;
           const elem = document.querySelector('.header__list-link');
-          if (window.location.pathname === '/library.html') {
+          if (
+            window.location.pathname === '/library.html' ||
+            window.location.pathname === '/filmoteka/library.html'
+          ) {
             setInterval(() => {
               elem.click();
             }, 1000);
