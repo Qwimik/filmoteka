@@ -8,14 +8,13 @@ const plugPoster = 'placeholder.237126ea.webp';
 export function renderCardMarkup(data) {
   const resultArray = data.results;
 
+  if (
+    window.location.pathname === '/library.html' ||
+    window.location.pathname === '/filmoteka/library.html'
+  ) {
+    document.querySelector('#paginationWrapper').style.display = 'none';
+  }
   if (resultArray) {
-    if (resultArray.length === 0) {
-      // Прибираємо пагінацію, якщо результати відсутні
-      document.querySelector('#paginationWrapper').style.display = 'none';
-    } else {
-      document.querySelector('#paginationWrapper').style.display = 'block';
-    }
-
     const singleCard = resultArray
       .map(
         ({
