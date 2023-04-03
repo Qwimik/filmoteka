@@ -10,3 +10,4 @@ import './js/open-modal';
 import './js/open-registration';
 import './js/firebase';
 import './js/render-watch';
+import './js/theme';
