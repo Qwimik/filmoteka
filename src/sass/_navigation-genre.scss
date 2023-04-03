@@ -1,0 +1,11 @@
+.navigation__genre {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.navigation__item {
+  background-color: burlywood;
+  border-radius: 5px;
+  padding: 5px 5px;
+}
