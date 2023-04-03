@@ -204,3 +204,26 @@
     text-transform: uppercase;
   }
 }
+
+.empty-library {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  color: var(--accent-color);
+  font-weight: 500;
+  max-width: 479px;
+  // min-height: 420px;
+  height: 100%;
+  border-collapse: collapse;
+  @include tablet {
+    width: 768px;
+    // min-height: 655px;
+  }
+  @include desktop {
+    width: 1280px;
+    // min-height: 780px;
+  }
+}
