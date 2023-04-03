@@ -1,3 +1,15 @@
+.navigation {
+  padding-top: 20px;
+
+  @media screen and (min-width: $tablet) {
+    padding-top: 60px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-top: 44px;
+  }
+}
+
 .navigation__genre {
   display: flex;
   gap: 10px;
@@ -29,5 +41,6 @@
   @media screen and (min-width: $desktop) {
     font-size: 14px;
     padding: 12px 25px;
+    border-radius: 20px;
   }
 }
