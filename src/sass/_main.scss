@@ -9,6 +9,12 @@
     padding-top: 44px;
   }
 }
+
+.moviesgallery-spinner {
+  margin: 50px auto;
+  transform: scale(1);
+}
+
 .moviesgallery-box {
   display: flex;
   flex-wrap: wrap;
