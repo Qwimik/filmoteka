@@ -197,17 +197,15 @@
     height: 45px;
     border-radius: 50%;
     top: 5px;
-    right: 15px;
+    right: 10px;
     cursor: pointer;
     fill: aqua;
     
-    @media screen and (min-width: $tablet) {
-        top: 5px;
+    @media screen and (min-width: $tablet) {        
         right: 20px;
     }
     
-    @media screen and (min-width: $desktop) {
-        top: 5px;
+    @media screen and (min-width: $desktop) {        
         right: 20px;
     }
 }
