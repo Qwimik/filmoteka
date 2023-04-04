@@ -11,10 +11,14 @@ const cardList = document.querySelector(`.moviesgallery-box`);
 // Перевірка чи знаходимось ми на сторінці Home
 const isHome = document.querySelector('#home');
 const isLibrary = document.querySelector('#library');
+const btnSignOut = document.querySelector('#btnSignOut');
 
 // пошук та рендер за замовчуванням головної сторінки при загрузці
 if (isHome) {
   window.addEventListener('load', event => {
+    if (!localStorage.getItem('user')) {
+      btnSignOut.style.display = 'none';
+    }
     addSpinnerTo('.moviesgallery', 'moviesgallery-spinner');
     try {
       API.searchTrending(1).then(res => {

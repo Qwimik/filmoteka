@@ -10,7 +10,6 @@ import Notiflix from 'notiflix';
 import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 import { refs, refsRegistration } from './open-registration';
 import { KEYS, getFilms } from './storage-service';
-import { isModalOpen } from './open-modal';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDNdha_Mwk9RTliXdwrHAWqx0yN9G0Yeo',
@@ -40,9 +39,7 @@ function onLibraryClick() {
   if (!isUserLogin) {
     refs.open.removeAttribute('href');
     refs.backdrop.classList.remove('is-hidden');
-    Notiflix.Notify.warning('Oops, please Sign In first', {
-      position: 'center-top',
-    });
+    Notiflix.Notify.warning('Oops, please Sign In first');
   }
 }
 
@@ -59,10 +56,7 @@ function onBtnSignOutClick() {
     () => {
       signOut(auth)
         .then(() => {
-          Notiflix.Notify.warning('See you soon!', {
-            position: 'center-top',
-          });
-          // notiflix - вихід з акаунту
+          Notiflix.Notify.warning('See you soon!');
           localStorage.removeItem(KEYS.WATCHED);
           localStorage.removeItem(KEYS.QUEUE);
           localStorage.removeItem('user');
@@ -74,6 +68,14 @@ function onBtnSignOutClick() {
           ) {
             setInterval(() => {
               elem.click();
+            }, 1000);
+          }
+          if (
+            window.location.pathname === '/index.html' ||
+            window.location.pathname === '/filmoteka/index.html'
+          ) {
+            setInterval(() => {
+              location.reload();
             }, 1000);
           }
         })
@@ -104,40 +106,35 @@ if (formReg) {
     createUserWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
         // Signed in
-        // тут ховаємо можливість логіну
         user = userCredential.user;
         refs.open.setAttribute('href', './library.html');
         refs.open.removeEventListener('click', onLibraryClick);
         refsRegistration.backdrop.classList.add('is-hidden');
+        localStorage.setItem('user', JSON.stringify(user));
+        btnSignOut.style.display = 'block';
         set(ref(database, 'users/' + user.uid), {
           email: email,
           username: username,
         })
           .then(() => {
             // Data saved successfully!
-            Notiflix.Notify.success(`Hello ${username}. Glad to see you!`, {
-              position: 'center-top',
-            });
+            Notiflix.Notify.success(`Hello ${username}. Glad to see you!`);
           })
           .catch(error => {
-            // The write failed...
             console.log(error);
           });
-        // if (window.location.pathname === '/index.html' && !isModalOpen.isOpen) {
-        //   setInterval(() => {
-        //     refs.open.click();
-        //   }, 1000);
-        // }
       })
       .catch(error => {
-        console.log(error);
-        Notiflix.Notify.failure('Incorrect data. Please, try again.', {
-          position: 'center-top',
-        });
+        // console.log(error);
+        if (error.code === 'auth/email-already-in-use') {
+          Notiflix.Notify.failure('User already exists.');
+        } else {
+          Notiflix.Notify.failure('Incorrect data. Please, try again.');
+        }
       });
-    formSign.username.value = '';
-    formSign.email.value = '';
-    formSign.password.value = '';
+    formReg.username.value = '';
+    formReg.email.value = '';
+    formReg.password.value = '';
   });
 }
 
@@ -157,21 +154,13 @@ if (formSign) {
         refs.backdrop.classList.add('is-hidden');
         refs.open.setAttribute('href', './library.html');
         refs.open.removeEventListener('click', onLibraryClick);
-        Notiflix.Notify.success('Welcome!', {
-          position: 'center-top',
-        });
+        btnSignOut.style.display = 'block';
+        Notiflix.Notify.success('Welcome!');
         getFilmsFromDB(user);
-        // if (window.location.pathname === '/index.html' && !isModalOpen.isOpen) {
-        //   setInterval(() => {
-        //     refs.open.click();
-        //   }, 1000);
-        // }
       })
       .catch(error => {
         console.log(error);
-        Notiflix.Notify.failure('Incorrect data. Please, try again.', {
-          position: 'center-top',
-        });
+        Notiflix.Notify.failure('Incorrect data. Please, try again.');
       });
     formSign.email.value = '';
     formSign.password.value = '';
@@ -194,14 +183,10 @@ export function updateDB(uid) {
     films: data,
   })
     .then(() => {
-      Notiflix.Notify.success('Update', {
-        position: 'center-top',
-      });
+      Notiflix.Notify.success('Update');
     })
     .catch(err => {
-      Notiflix.Notify.failure('Try again later...', {
-        position: 'center-top',
-      });
+      Notiflix.Notify.failure('Try again later...');
       console.log(err);
     });
 }
