@@ -13,3 +13,4 @@ import './js/firebase';
 import './js/render-watch';
 import './js/check-watched';
 import './js/theme';
+import './js/slider';
