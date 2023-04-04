@@ -152,7 +152,6 @@
     &-wrap {
       display: flex;
       align-items: center;
-      justify-content: start;
       width: 100%;
       position: relative;
 
@@ -170,7 +169,7 @@
         height: 0.1px;
         background-color: var(--primary-bg-color);
         position: absolute;
-        bottom: -4px;
+        bottom: 4px;
 
         @include tablet {
           width: 336px;
@@ -185,12 +184,15 @@
     &-icon {
       position: absolute;
       right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     &-input {
       border: none;
       border-radius: 5px;
-      padding: 0 3px;
+      padding-left: 3px;
       border-color: transparent;
       background: transparent;
       outline: none;
@@ -208,8 +210,8 @@
     &-button {
       background-color: transparent;
       color: transparent;
-      width: 12px;
-      height: 12px;
+      width: 30px;
+      height: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
