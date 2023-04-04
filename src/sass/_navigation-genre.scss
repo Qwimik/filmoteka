@@ -33,9 +33,7 @@
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
-    transition: box-shadow 0.3s;
-    // box-shadow: 0 0 9px rgb(117, 117, 117);
+    background-color: #913a00;
   }
 
   @media screen and (min-width: $desktop) {
