@@ -26,7 +26,7 @@ async function onClickFilterByGenre(e) {
     scrollToTop();
     // console.log(response);
     const currentPage = evt.page;
-    console.log(currentPage);
+    // console.log(currentPage);
     const response = await searchMovieGenre(idGenre, currentPage);
     // pagination.movePageTo(1);
     renderCardMarkup(response);
