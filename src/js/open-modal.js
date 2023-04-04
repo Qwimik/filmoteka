@@ -98,7 +98,9 @@ function btnHandler(e) {
 async function watchTrailer(e) {
   const { id } = e.currentTarget;
   const videos = await API.getVideos(id);
-  const trailerData = videos.find(({ name }) => name === 'Official Trailer');
+  const trailerData =
+    videos.find(({ name }) => name === 'Official Trailer') ||
+    videos.find(({ type }) => type === 'Trailer');
   if (!trailerData) {
     Notiflix.Notify.failure('Incorrect data. Please, try again.', {
       position: 'center-top',
