@@ -6,6 +6,7 @@ import Notiflix from 'notiflix';
 import { updateDB } from './firebase';
 import { refs } from './open-registration';
 import BigPicture from 'bigpicture';
+import { hideScroll } from './scroll';
 
 import {
   createModalMarkup,
@@ -39,6 +40,8 @@ function onCardClick(e) {
     .then(response => {
       modalBackdrop.classList.remove('is-hidden');
       const markup = createModalMarkup(response);
+      hideScroll();
+
       modal.innerHTML = markup;
       currentFilm = response;
 

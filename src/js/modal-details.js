@@ -1,4 +1,5 @@
 import { renderActiveListFilms } from './library-header';
+import { showScroll } from './scroll';
 
 // modal-details.js
 
@@ -9,6 +10,7 @@ const closeButton = document.querySelector('.button__close');
 
 const closeModal = () => {
   modalBackdrop.classList.add('is-hidden');
+  showScroll();
   if (
     window.location.pathname === '/library.html' ||
     window.location.pathname === '/filmoteka/library.html'
