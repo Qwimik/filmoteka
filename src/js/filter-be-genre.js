@@ -13,6 +13,8 @@ if (navigation) {
 
 async function onClickFilterByGenre(e) {
   const textContent = e.target.textContent;
+  // console.log(genres);
+  // idGenre = genres.name;
   genres.forEach(element => {
     if (textContent === element.name) {
       idGenre = element.id;
@@ -26,7 +28,8 @@ async function onClickFilterByGenre(e) {
     scrollToTop();
     // console.log(response);
     const currentPage = evt.page;
-    // console.log(currentPage);
+    console.log(currentPage);
+    console.log(idGenre);
     const response = await searchMovieGenre(idGenre, currentPage);
     // pagination.movePageTo(1);
     renderCardMarkup(response);

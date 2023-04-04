@@ -2,7 +2,7 @@
   padding-top: 20px;
 
   @media screen and (min-width: $tablet) {
-    padding-top: 60px;
+    padding-top: 30px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -13,34 +13,34 @@
 .navigation__genre {
   display: flex;
   gap: 10px;
-  justify-content: center; 
+  justify-content: center;
   flex-wrap: wrap;
   text-decoration: none;
-  
+
   font-size: 12px;
-  font-weight: 500; 
+  font-weight: 500;
   line-height: calc(14 / 12);
 }
 .navigation__item {
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #ff6b08;
-  border-radius: 15px;
-  padding: 8px 16px;
-  cursor: pointer;  
+  border-radius: 5px;
+  padding: 0.8rem;
+  cursor: pointer;
 
   transition: background 300ms ease-in-out, color 300ms,
     transform 300ms ease-in-out;
 
   &:hover,
-    &:focus {
-      transform: scale(1.1);
-      transition: box-shadow 0.3s;
-      box-shadow: 0 0 9px rgb(117, 117, 117);    
-    } 
+  &:focus {
+    transform: scale(1.1);
+    transition: box-shadow 0.3s;
+    // box-shadow: 0 0 9px rgb(117, 117, 117);
+  }
 
   @media screen and (min-width: $desktop) {
     font-size: 14px;
-    padding: 12px 25px;
-    border-radius: 20px;
+    // padding: 12px 25px;
+    border-radius: 5px;
   }
 }
