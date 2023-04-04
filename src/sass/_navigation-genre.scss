@@ -1,8 +1,9 @@
 .navigation {
   padding-top: 20px;
-
+  display: none;
   @media screen and (min-width: $tablet) {
     padding-top: 30px;
+    display: block;
   }
 
   @media screen and (min-width: $desktop) {

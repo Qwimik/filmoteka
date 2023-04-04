@@ -105,9 +105,7 @@ async function watchTrailer(e) {
     videos.find(({ name }) => name === 'Official Trailer') ||
     videos.find(({ type }) => type === 'Trailer');
   if (!trailerData) {
-    Notiflix.Notify.failure('Incorrect data. Please, try again.', {
-      position: 'center-top',
-    });
+    Notiflix.Notify.failure('Incorrect data. Please, try again.');
     return;
   }
   BigPicture({
