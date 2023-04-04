@@ -39,7 +39,7 @@ export function renderCardMarkup(data) {
 
           genresList.forEach(function (item) {
             let genre = allGenres.genres.map(genre => {
-              if (item === genre.id) {
+              if (item === genre.id || item.id === genre.id) {
                 itemGenre.push(genre.name);
               }
             });
