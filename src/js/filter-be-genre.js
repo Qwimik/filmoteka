@@ -2,6 +2,8 @@ import { async } from '@firebase/util';
 import { searchMovieGenre } from './api';
 import { genres } from '/src/data/genres';
 import { renderCardMarkup } from './render-markup';
+import { pagination } from './pagination';
+import { scrollToTop } from './scrollToTop';
 const navigation = document.querySelector('.navigation__genre');
 let idGenre = 0;
 
@@ -16,6 +18,18 @@ async function onClickFilterByGenre(e) {
       idGenre = element.id;
     }
   });
-  const response = await searchMovieGenre(idGenre);
+
+  const response = await searchMovieGenre(idGenre, 1);
+  pagination.reset();
+  pagination.off();
+  pagination.on('beforeMove', async evt => {
+    scrollToTop();
+    // console.log(response);
+    const currentPage = evt.page;
+    // console.log(currentPage);
+    const response = await searchMovieGenre(idGenre, currentPage);
+    // pagination.movePageTo(1);
+    renderCardMarkup(response);
+  });
   renderCardMarkup(response);
 }
