@@ -2,8 +2,11 @@ import * as API from './api';
 import { Button } from './button';
 import * as StorageService from './storage-service';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 import { updateDB } from './firebase';
 import { refs } from './open-registration';
+import BigPicture from 'bigpicture';
+import { hideScroll } from './scroll';
 
 import {
   createModalMarkup,
@@ -37,11 +40,14 @@ function onCardClick(e) {
     .then(response => {
       modalBackdrop.classList.remove('is-hidden');
       const markup = createModalMarkup(response);
+      hideScroll();
+
       modal.innerHTML = markup;
       currentFilm = response;
 
       new Button('[data-list="watched"]', btnHandler);
       new Button('[data-list="queue"]', btnHandler);
+      new Button('.film__button-trailer', watchTrailer);
     })
     .catch(error => {
       Notify.failure('Oooopsss, something went WRONG!!!');
@@ -90,4 +96,20 @@ function btnHandler(e) {
     default:
       return;
   }
+}
+
+async function watchTrailer(e) {
+  const { id } = e.currentTarget;
+  const videos = await API.getVideos(id);
+  const trailerData =
+    videos.find(({ name }) => name === 'Official Trailer') ||
+    videos.find(({ type }) => type === 'Trailer');
+  if (!trailerData) {
+    Notiflix.Notify.failure('Incorrect data. Please, try again.');
+    return;
+  }
+  BigPicture({
+    el: e.target,
+    ytSrc: trailerData.key,
+  });
 }

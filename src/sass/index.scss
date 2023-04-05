@@ -4,10 +4,14 @@
 @import './breakpoints';
 @import './visually-hidden';
 @import './global';
+@import './fonts';
 @import './utils/mixin';
 @import './utils/placeholders';
 @import './utils/utility';
+
+// components
 @import './components/container';
+@import './components/button';
 
 // partials
 @import './home-header';
@@ -21,6 +25,7 @@
 @import './modal-team';
 @import './modal-auth';
 @import './registration';
+
 
 // components
 @import './components/button';

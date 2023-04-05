@@ -1,6 +1,13 @@
 // footer
 .footer {
   background-color: var(--footer-bg-color);
+  height: 100px;
+  @include tablet {
+    height: 79px;
+  }
+  @include desktop {
+    height: 77px;
+  }
 }
 
 .footer__general {
@@ -49,4 +56,8 @@
 .modal__footer {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.footer__position {
+  min-height: calc(100vh - 70px);
 }

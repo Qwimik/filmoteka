@@ -1,11 +1,45 @@
+.navigation {
+  padding-top: 20px;
+  display: none;
+  @media screen and (min-width: $tablet) {
+    padding-top: 30px;
+    display: block;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-top: 44px;
+  }
+}
+
 .navigation__genre {
   display: flex;
-  gap: 5px;
+  gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: calc(14 / 12);
 }
 .navigation__item {
-  background-color: burlywood;
+  color: #ffffff;
+  background-color: #ff6b08;
   border-radius: 5px;
-  padding: 5px 5px;
+  padding: 0.8rem;
+  cursor: pointer;
+
+  transition: background 300ms ease-in-out, color 300ms,
+    transform 300ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: #913a00;
+  }
+
+  @media screen and (min-width: $desktop) {
+    font-size: 14px;
+    // padding: 12px 25px;
+    border-radius: 5px;
+  }
 }

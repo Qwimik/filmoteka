@@ -39,12 +39,11 @@
             placeholder="Movie search"
             required
           />
-          <span class="header__form-icon">
-            <svg class="header__logo-svg" width="12" height="12">
-              <use href="/src/images/new-symbol-defs.svg#icon-search"></use>
-            </svg>
-          </span>
-          <button class="header__form-button" type="submit">OK</button>
+          <button class="header__form-button" type="submit">
+              <svg class="header__logo-svg" width="12" height="12">
+                <use href="/src/images/new-symbol-defs.svg#icon-search"></use>
+              </svg>
+          </button>
         </div>
         <div class="header__form-text visually-hidden">
           Search result not successful. Enter the correct movie name and try
@@ -53,4 +52,5 @@
       </form>
     </div>
   </div>
+  <include src="./partials/theme.html"></include>
 </header>

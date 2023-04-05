@@ -3,9 +3,13 @@ import { addFilmToLs } from './storage-service';
 import { removeFilmFromLs } from './storage-service';
 import { getFilms } from './storage-service';
 import { renderCardMarkup } from './render-markup';
+import { toCheckLibrary } from './check-watched';
 
 // Знаходимо кнопки за атрибутами
 const filter = document.querySelector('.filter__wrap');
+
+// обираємо перелік карток, якщо вони є
+const cardList = document.querySelector('[data-set="library-films"]');
 
 // Якщо вони є вішаємо слухач події
 if (filter) {
@@ -40,4 +44,5 @@ export async function renderActiveListFilms() {
   const key = activeButton.dataset.action;
   const films = await getFilms(key);
   renderCardMarkup({ results: films });
+  toCheckLibrary(cardList);
 }

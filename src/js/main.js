@@ -4,16 +4,22 @@ import { pagination } from './pagination';
 import { scrollToTop } from './scrollToTop';
 import { renderStartPagination } from './pagination';
 import { renderActiveListFilms } from './library-header';
+import { addSpinnerTo } from './spinner';
 
 const cardList = document.querySelector(`.moviesgallery-box`);
 
 // Перевірка чи знаходимось ми на сторінці Home
 const isHome = document.querySelector('#home');
 const isLibrary = document.querySelector('#library');
+const btnSignOut = document.querySelector('#btnSignOut');
 
 // пошук та рендер за замовчуванням головної сторінки при загрузці
 if (isHome) {
   window.addEventListener('load', event => {
+    if (!localStorage.getItem('user')) {
+      btnSignOut.style.display = 'none';
+    }
+    addSpinnerTo('.moviesgallery', 'moviesgallery-spinner');
     try {
       API.searchTrending(1).then(res => {
         const totalItems = res.total_results;

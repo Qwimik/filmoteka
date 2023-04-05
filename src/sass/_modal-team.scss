@@ -52,28 +52,31 @@
 .modal__btn {
     margin-bottom: 15px;
     display: flex;
-    justify-content: flex-end;  
-    // background-color: #c064cc;  
+    justify-content: flex-end;      
 }
 
 .modal__close-btn {
     display: inline-flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border: none;
     margin: 5px;
-    border-radius: 4px;
+    border-radius: 5px;
     font-family: sans-serif;
     font-size: 16px;
+    background: opacity($color: #000000);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
         0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2);
-    cursor: pointer;  
+    cursor: pointer; 
 }
 
-.modal__close-icon:hover,
-.modal__close-icon:focus {
-    fill: #ff6b08;      
+.modal__close-btn:hover,
+.modal__close-btn:focus {
+    fill: #ff6b08;  
+    transform: scale(1.1);
+    transition: box-shadow 0.3s;
+    box-shadow: 0 0 9px rgb(117, 117, 117);
 }
 
 .team {
@@ -88,8 +91,8 @@
     letter-spacing: 0.03em;
     text-align: center;
     padding: 1% 10%;
-    border-radius: 15px;
-    background: rgb(2, 10, 19);
+    border-radius: 15px;    
+    color: #f7f2f2;
     background: #ff6b08;
 }
 
@@ -173,8 +176,7 @@
     letter-spacing: 0.03em;
     text-align: center;
     margin-bottom: 10px;
-    border: none;    
-    border-bottom: 1.5px solid #ff6b08;
+    border: none;        
     color: #000000;
 }
 
@@ -187,3 +189,41 @@
     margin-bottom: 10px;
     color: #ff6b08;
 }
+
+.team__social {
+    position: absolute;
+    display: flex;
+    justify-content: center;    
+    background: #f7f2f2;    
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;    
+    
+    @media screen and (min-width: $tablet) {        
+        right: 20px;
+    }
+    
+    @media screen and (min-width: $desktop) {        
+        right: 20px;
+    }
+}
+
+.git-icon {
+    position: absolute;      
+    top: 5px;    
+    right: 5px;   
+    background: opacity($color: #000000);
+    border-radius: 50%;   
+}
+
+.git-icon:hover,
+.git-icon:focus {   
+    background-color: #ff6b08;  
+    transform: scale(1.1);
+    transition: box-shadow 0.3s;
+    box-shadow: 0 0 9px rgb(117, 117, 117);
+}
+
