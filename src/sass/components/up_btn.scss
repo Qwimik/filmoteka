@@ -1,0 +1,17 @@
+.up_btn {
+  background: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 1px;
+  &:hover {
+    background-color: $accent-color;
+  }
+  transition-duration: 250ms;
+}
+
