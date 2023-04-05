@@ -14,15 +14,28 @@
         </div>
         <ul class="header__list">
           <li class="header__list-item">
-            <a class="header__list-link" href="./index.html">home</a>
+            <a
+              class="header__list-link"
+              href="./index.html"
+              aria-label="home link"
+              >home</a
+            >
           </li>
           <li class="header__list-item current">
-            <a class="header__list-link" href="./library.html" id="btnLibrary"
+            <a
+              class="header__list-link"
+              href="./library.html"
+              id="btnLibrary"
+              aria-label="library link"
               >my library</a
             >
           </li>
           <li class="header__list-item">
-            <button class="header__list-link" id="btnSignOut">
+            <button
+              class="header__list-link"
+              id="btnSignOut"
+              aria-label="user exit"
+            >
               <svg class="header__logo-svg" width="18" height="18">
                 <use href="/src/images/new-symbol-defs.svg#icon-exit"></use>
               </svg>
@@ -36,6 +49,7 @@
           <li class="filter__item">
             <button
               class="button light active filter__button button_library"
+              aria-label="watched list"
               data-action="watchedFilms"
               data-active="watched"
             >
@@ -44,9 +58,10 @@
           </li>
           <li class="filter__item">
             <button
+              class="button light filter__button"
+              aria-label="queue list"
               data-active="queue"
               data-action="queueFilms"
-              class="button light filter__button"
             >
               <span class="filter__text"> queue </span>
             </button>

@@ -96,6 +96,7 @@ function createModalMarkup(movie) {
                     type="button"
                     class="button film__button upper active"
                     id=${id}
+                    aria-label="use storage"
                     data-list="watched"
                     data-action=${
                       isInclude(KEYS.WATCHED, movie) ? 'remove' : 'add'
@@ -113,6 +114,7 @@ function createModalMarkup(movie) {
                     type="button"
                     class="button film__button upper"
                     id=${id}
+                    aria-label="use storage"
                     data-list="queue"
                     data-action=${
                       isInclude(KEYS.QUEUE, movie) ? 'remove' : 'add'
